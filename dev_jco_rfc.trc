@@ -190,3 +190,71 @@ COUNTER     2
     Return code: RFC_FAILURE(1)
     error group: 102
     key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20180527 144359 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error:  >Sun May 27 14:43:59,704<    
+RfcException: [null]
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=192.168.0.17 SYSNR=00 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '192.168.0.17:3300' not reached
+
+TIME        Sun May 27 14:43:59 2018
+RELEASE     711
+COMPONENT   NI (network interface)
+VERSION     39
+RC          -10
+MODULE      nixxi.cpp
+LINE        3147
+DETAIL      NiPConnect2: 192.168.0.17:3300
+SYSTEM CALL connect
+ERRNO       10060
+ERRNO TEXT  WSAETIMEDOUT: Connection timed out
+COUNTER     2
+
+    Return code: RFC_FAILURE(1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20180527 154424 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error:  >Sun May 27 15:44:24,619<    
+RfcException: [null]
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=192.168.0.17 SYSNR=00 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '192.168.0.17:3300' not reached
+
+TIME        Sun May 27 15:44:24 2018
+RELEASE     711
+COMPONENT   NI (network interface)
+VERSION     39
+RC          -10
+MODULE      nixxi.cpp
+LINE        3147
+DETAIL      NiPConnect2: 192.168.0.17:3300
+SYSTEM CALL connect
+ERRNO       10060
+ERRNO TEXT  WSAETIMEDOUT: Connection timed out
+COUNTER     2
+
+    Return code: RFC_FAILURE(1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20180527 160202 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error: [1] >Sun May 27 16:02:02,576<    
+RfcException: [System <empty>|192.168.0.17/00]
+    message: Handle close pending
+    Return code: RFC_CLOSED(6)
+    error group: 109
+    key: RFC_ERROR_CANCELLED
+
+**** Error file opened at 20180527 165539 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error: [1] >Sun May 27 16:55:39,507<    
+RfcException: [System <empty>|192.168.0.17/00]
+    message: Handle close pending
+    Return code: RFC_CLOSED(6)
+    error group: 109
+    key: RFC_ERROR_CANCELLED

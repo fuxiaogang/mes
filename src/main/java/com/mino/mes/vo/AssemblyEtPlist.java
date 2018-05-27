@@ -1,10 +1,12 @@
 package com.mino.mes.vo;
 
 /**
+ * 装配生产信息
+ *
  * @author fuxg
- * @create 2018-05-25 21:25
+ * @create 2018-05-27 11:31
  **/
-public class ElecEtPlist {
+public class AssemblyEtPlist {
     /**
      * 机台号
      */
@@ -26,9 +28,13 @@ public class ElecEtPlist {
      */
     String sname;
     /**
-     * 图号
+     * 单元号
      */
-    String zzext;
+    String unumb;
+    /**
+     * 设备号
+     */
+    String equip;
     /**
      * 开始日期
      */
@@ -46,7 +52,7 @@ public class ElecEtPlist {
      */
     String beginTr;
     /**
-     * 持续时间
+     * 持续时间（web端显示使用）
      */
     String proctTr;
     /**
@@ -98,12 +104,20 @@ public class ElecEtPlist {
         this.sname = sname;
     }
 
-    public String getZzext() {
-        return zzext;
+    public String getUnumb() {
+        return unumb;
     }
 
-    public void setZzext(String zzext) {
-        this.zzext = zzext;
+    public void setUnumb(String unumb) {
+        this.unumb = unumb;
+    }
+
+    public String getEquip() {
+        return equip;
+    }
+
+    public void setEquip(String equip) {
+        this.equip = equip;
     }
 
     public String getRdate() {

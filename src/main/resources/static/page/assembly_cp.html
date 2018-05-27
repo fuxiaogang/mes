@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../js/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
     <script type="text/javascript" src="../js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="../js/assembly_cp.js"></script>
     <title>MINOP-MES</title>
 </head>
 <body>
@@ -29,43 +30,31 @@
                         <td><div>类型</div><div>Type</div></td>
                         <td colspan="2">
                             <div id="operateType" class="operate-type">
-                                <label><input type="radio" name="type" checked>正常作业</label>
-                                <label><input type="radio" name="type">准备动作</label>
-                                <label><input type="radio" name="type">问题处理</label>
-                                <label><input type="radio" name="type" >正常作业</label>
-                                <label><input type="radio" name="type">准备动作</label>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td><div>员工号</div><div>Emp ID</div></td>
-                        <td colspan="2"><input type="text"></td>
+                        <td colspan="2"><input type="text" id="pernr-input"></td>
                     </tr>
                     <tr>
                         <td><div>设备号</div><div>Equ ID</div></td>
-                        <td colspan="2"><input type="text"></td>
+                        <td colspan="2"><input type="text" id="equip-input"></td>
                     </tr>
                     </tbody>
                 </table>
-                <div class="submit-btn"><a class="common-btn">确定上机</a></div>
+                <div class="submit-btn"><a class="common-btn" id="startBtn">确定上机</a></div>
             </form>
         </div>
 
         <div class="history">
             <p class="title-info">单元信息 Unit Inf.</p>
-            <div id="historyTable" class="history-table">
+            <div id="unitInfTable" class="unit-inf-table">
                 <table class="table">
                     <thead>
-                    <tr><th>人员</th><th>开始时间</th><th>工位</th></tr>
+                    <tr><th>单元号</th><th>单元描述</th></tr>
                     </thead>
                     <tbody>
-                    <tr><td>傅大爷</td><td>20180101</td><td>25</td></tr>
-                    <tr><td>傅大爷</td><td>20180101</td><td>23</td></tr>
-                    <tr><td>傅大爷</td><td>20180101</td><td>24</td></tr>
-                    <tr><td>傅大爷</td><td>20180101</td><td>23</td></tr>
-                    <tr><td>傅大爷</td><td>20180101</td><td>24</td></tr>
-                    <tr><td>傅大爷</td><td>20180101</td><td>23</td></tr>
-                    <tr><td>傅大爷</td><td>20180101</td><td>24</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -84,16 +73,28 @@
             <div class="project-list">
                 <ul>
                     <li>
-                        <p>项目号Project111111111111111111</p>
-                        <p>MXXX-1801</p>
+                        <p>项目号Project</p>
+                        <p id="order_pspid"></p>
                     </li>
                     <li>
-                        <p>项目号Project</p>
-                        <p>MXXX-1801</p>
+                        <p>物料编号Material</p>
+                        <p id="order_matnr"></p>
                     </li>
                     <li>
-                        <p>项目号Project</p>
-                        <p>MXXX-1801</p>
+                        <p>物料描述Mat Description</p>
+                        <p id="order_maktx"></p>
+                    </li>
+                    <li>
+                        <p>加工数量Quantity</p>
+                        <p id="order_psmng"></p>
+                    </li>
+                    <li>
+                        <p>计划开始时间From</p>
+                        <p id="order_usr08"></p>
+                    </li>
+                    <li>
+                        <p>计划完成时间To</p>
+                        <p id="order_usr09"></p>
                     </li>
                 </ul>
             </div>
@@ -116,117 +117,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>MBXX-1231-123A-SDA</td>
-                        <td>100001</td>
-                        <td>傅大爷</td>
-                        <td>20180401 12:00:00</td>
-                        <td>00:32:01</td>
-                        <td>接线</td>
-                        <td>正常作业</td>
-                        <td><a>结束</a></td>
-                    </tr>
-                    <tr>
-                        <td>MBXX-1231-123A-SDA</td>
-                        <td>100001</td>
-                        <td>傅大爷</td>
-                        <td>20180401 12:00:00</td>
-                        <td>00:32:01</td>
-                        <td>接线</td>
-                        <td>正常作业</td>
-                        <td><a>结束</a></td>
-                    </tr>
-                    <tr>
-                        <td>MBXX-1231-123A-SDA</td>
-                        <td>100001</td>
-                        <td>傅大爷</td>
-                        <td>20180401 12:00:00</td>
-                        <td>00:32:01</td>
-                        <td>接线</td>
-                        <td>正常作业</td>
-                        <td><a>结束</a></td>
-                    </tr>
-                    <tr>
-                        <td>MBXX-1231-123A-SDA</td>
-                        <td>100001</td>
-                        <td>傅大爷</td>
-                        <td>20180401 12:00:00</td>
-                        <td>00:32:01</td>
-                        <td>接线</td>
-                        <td>正常作业</td>
-                        <td><a>结束</a></td>
-                    </tr>
-                    <tr>
-                        <td>MBXX-1231-123A-SDA</td>
-                        <td>100001</td>
-                        <td>傅大爷</td>
-                        <td>20180401 12:00:00</td>
-                        <td>00:32:01</td>
-                        <td>接线</td>
-                        <td>正常作业</td>
-                        <td><a>结束</a></td>
-                    </tr>
-                    <tr>
-                        <td>MBXX-1231-123A-SDA</td>
-                        <td>100001</td>
-                        <td>傅大爷</td>
-                        <td>20180401 12:00:00</td>
-                        <td>00:32:01</td>
-                        <td>接线</td>
-                        <td>正常作业</td>
-                        <td><a>结束</a></td>
-                    </tr>
-                    <tr>
-                        <td>MBXX-1231-123A-SDA</td>
-                        <td>100001</td>
-                        <td>傅大爷</td>
-                        <td>20180401 12:00:00</td>
-                        <td>00:32:01</td>
-                        <td>接线</td>
-                        <td>正常作业</td>
-                        <td><a>结束</a></td>
-                    </tr>
-                    <tr>
-                        <td>MBXX-1231-123A-SDA</td>
-                        <td>100001</td>
-                        <td>傅大爷</td>
-                        <td>20180401 12:00:00</td>
-                        <td>00:32:01</td>
-                        <td>接线</td>
-                        <td>正常作业</td>
-                        <td><a>结束</a></td>
-                    </tr>
-                    <tr>
-                        <td>MBXX-1231-123A-SDA</td>
-                        <td>100001</td>
-                        <td>傅大爷</td>
-                        <td>20180401 12:00:00</td>
-                        <td>00:32:01</td>
-                        <td>接线</td>
-                        <td>正常作业</td>
-                        <td><a>结束</a></td>
-                    </tr>
 
-                    <tr>
-                        <td>MBXX-1231-123A-SDA</td>
-                        <td>100001</td>
-                        <td>傅大爷</td>
-                        <td>20180401 12:00:00</td>
-                        <td>00:32:01</td>
-                        <td>接线</td>
-                        <td>正常作业</td>
-                        <td><a>结束</a></td>
-                    </tr>
-                    <tr>
-                        <td>MBXX-1231-123A-SDA</td>
-                        <td>100001</td>
-                        <td>傅大爷</td>
-                        <td>20180401 12:00:00</td>
-                        <td>00:32:01</td>
-                        <td>接线</td>
-                        <td>正常作业</td>
-                        <td><a>结束</a></td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -247,22 +138,7 @@
             station.toggle();
         });
 
-        /***请求类型数据***/
-        //requestType();
     });
-
-
-    /***请求类型数据***/
-    function requestType(){
-        emsCommon.request({"url":"/elec/listEtPlist","data":{"ECODE":"ME010"},"callback":function(data){
-            var html = "";
-            data = JSON.parse(data);
-            $(data).each(function (index,element) {
-                html += '<label><input type="radio" name="type" value="'+element.ecode+'" >'+element.zstat+'</label>';
-            });
-            $("#operateType").empty().append(html);
-        }});
-    }
 
 
     /***历史信息***/

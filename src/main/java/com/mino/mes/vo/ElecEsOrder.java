@@ -1,13 +1,34 @@
 package com.mino.mes.vo;
 
 public class ElecEsOrder {
+    /**
+     *生产工单
+     */
     String aufnr;
+    /**
+     *项目号
+     */
     String pspid;
+    /**
+     *物料编号
+     */
     String matnr;
+    /**
+     *物料描述
+     */
     String maktx;
+    /**
+     *  加工数量
+     */
     String psmng;
+    /**
+     *计划开始日期
+     */
     String usr08;
-    String  usr09;
+    /**
+     *计划完成日期
+     */
+    String usr09;
 
     public String getAufnr() {
         return aufnr;
