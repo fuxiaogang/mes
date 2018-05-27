@@ -4,24 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link type="text/css" href="../css/common.css" rel="Stylesheet"/>
-    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="../js/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../js/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
+    <link type="text/css" href="../js/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="Stylesheet"/>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="../js/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript" src="../js/electric_pk.js"></script>
-
     <title>MINOP-MES</title>
-    <style>
-
-    </style>
 </head>
 <body>
 <div class="electric-wrapper">
 
     <div class="pk-title-info">
         <span>电气车间-生产管理看板</span>
-        <span><input type="text" value="" id="dateSelect"></span>
+        <span>
+            <input type="text" value="" id="dateSelect" placeholder="日期 Date" class="form_datetime">
+        </span>
         <span><a href="./index.html">返回首页</a></span>
     </div>
     <div class="station-status">
@@ -68,6 +69,19 @@
         var h3 = $("#productionHead").outerHeight(true);
         var tableHeight = browserHeight - (h1 + h2 + h3);
         $("#productionInf").height(tableHeight);
+
+        /***日期控件***/
+        $("#dateSelect").datetimepicker({
+            language:  'zh-CN',
+            format: 'yyyy-mm-dd',//显示格式
+            todayHighlight: 1,//今天高亮
+            minView: "month",//设置只显示到月份
+            startView:2,
+            forceParse: 0,
+            showMeridian: 1,
+            autoclose: 1//选择后自动关闭
+        });
+
     });
 
 </script>

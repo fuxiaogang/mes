@@ -60,6 +60,7 @@ a{text-decoration : none!important; }
 .production-inf .table tr td:nth-child(7){width: 20%;}
 .production-inf .table tr td:nth-child(8){width: 10%;}
 #productionHead tr{position: absolute;background: #F3F3F3;}
+.pk-title-info .form_datetime {width: 150px;height: 30px;}
 /***装配上机操作***/
 .unit-inf-table{overflow-y: auto;}
 .unit-inf-table .table tr td{width: 40%;}
