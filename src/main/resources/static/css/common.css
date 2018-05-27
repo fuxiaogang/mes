@@ -62,13 +62,16 @@ a{text-decoration : none!important; }
 #productionHead tr{position: absolute;background: #F3F3F3;}
 /***装配上机操作***/
 .unit-inf-table{overflow-y: auto;}
-.unit-inf-table .table tr td{width: 50%;}
+.unit-inf-table .table tr td{width: 40%;}
+.unit-inf-table .table tr td:nth-child(3){width: 20%;}
+.unit-inf-table .table tr td div.cb{width: 80px;}
 .assembly-prd-table{border:1px solid #000000;overflow-y: auto;}
 .assembly-prd-table .table tr td{width:10%;}
 /***装配车间看板***/
 .assemble-prd-inf{height: 280px;overflow-y: auto;}
 .assemble-prd-inf .table{margin-top: 35px;}
 .assemble-prd-inf .table tr td {width: 10%;}
+
 
 
 
