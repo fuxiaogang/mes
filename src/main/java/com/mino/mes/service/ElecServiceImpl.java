@@ -3,10 +3,7 @@ package com.mino.mes.service;
 import com.mino.mes.SAPConn;
 import com.mino.mes.utils.Constant;
 import com.mino.mes.utils.MesException;
-import com.mino.mes.vo.ElecEsOrder;
-import com.mino.mes.vo.ElecEtHistory;
-import com.mino.mes.vo.ElecEtPlist;
-import com.mino.mes.vo.Stats;
+import com.mino.mes.vo.*;
 import com.sap.conn.jco.*;
 import org.springframework.stereotype.Service;
 
@@ -244,6 +241,66 @@ public class ElecServiceImpl {
         function.execute(destination);
 
         checkSapResponse(function);
+    }
+
+    /**
+     * 看版
+     *
+     * @param date
+     * @throws Exception
+     */
+    public void findBoard(String date) throws Exception {
+        final String functionName = Constant.FUN_ELEC_BOARD_ZMES_IF009;
+        final List<ElecEtPlist> datas = new LinkedList<>();
+
+        JCoDestination destination = SAPConn.getConnect();
+        JCoFunction function = destination.getRepository().getFunction(functionName);
+        JCoParameterList input = function.getImportParameterList();
+        input.setValue("IN_DATE", date);
+        function.execute(destination);
+
+        checkSapResponse(function);
+
+        JCoParameterList exportTable = function.getTableParameterList();
+        JCoTable etPlistTable = exportTable.getTable("ET_PLIST");
+
+        boolean loopFlag1 = !etPlistTable.isEmpty();
+        while (loopFlag1) {
+            ElecBoardEtPlist elecBoardEtPlist = new ElecBoardEtPlist();
+            String PSPID = etPlistTable.getString("PSPID");
+            String MAKTX = etPlistTable.getString("MAKTX");
+            String ECODE = etPlistTable.getString("ECODE");
+            String ECODE_TEXT = etPlistTable.getString("ECODE_TEXT");
+            String AUFNR = etPlistTable.getString("AUFNR");
+            Long PERNR = etPlistTable.getLong("PERNR");
+            String SNAME = etPlistTable.getString("SNAME");
+            String ZZEXT = etPlistTable.getString("ZZEXT");
+            String RDATE = etPlistTable.getString("RDATE");
+            String RTIME = etPlistTable.getString("RTIME");
+            Integer PROCT = etPlistTable.getInt("PROCT");
+            String BEGIN_TR = etPlistTable.getString("BEGIN_TR");
+            String PROCT_TR = etPlistTable.getString("PROCT_TR");
+            String ZSTAT = etPlistTable.getString("ZSTAT");
+            Long EVEID = etPlistTable.getLong("EVEID");
+
+            elecBoardEtPlist.setPspid(PSPID);
+            elecBoardEtPlist.setMaktx(MAKTX);
+            elecBoardEtPlist.setEcode(ECODE);
+            elecBoardEtPlist.setEcodeText(ECODE_TEXT);
+            elecBoardEtPlist.setAufnr(AUFNR);
+            elecBoardEtPlist.setPernr(PERNR);
+            elecBoardEtPlist.setSname(SNAME);
+            elecBoardEtPlist.setZzext(ZZEXT);
+            elecBoardEtPlist.setRdate(RDATE);
+            elecBoardEtPlist.setRtime(RTIME);
+            elecBoardEtPlist.setProct(PROCT);
+            elecBoardEtPlist.setBeginTr(BEGIN_TR);
+            elecBoardEtPlist.setProctTr(PROCT_TR);
+            elecBoardEtPlist.setZstat(ZSTAT);
+           // datas.add(elecBoardEtPlist);
+            loopFlag1 = etPlistTable.nextRow();
+        }
+//        return null;
     }
 
 
