@@ -60,9 +60,8 @@ $(function () {
      * 停止
      */
     $('#prd-table').on('click', 'a[name="stopBtn"]', function () {
-        var dura = $(this).closest('tr').find('td[name="proctTd"]').eq(0).text();
+        var dura = $(this).closest('tr').find('td[name="proctTr"]').eq(0).text();
         var sname = $(this).closest('tr').find('td[name="snameTd"]').eq(0).text();
-        dura = emsCommon.formatDura(dura);
         if (confirm(sname + '已经执行任务' + dura + ',确定结束当前任务？')) {
             var eveid = $(this).attr('data-eveid');
             var ecode = $(this).attr('data-ecode');
