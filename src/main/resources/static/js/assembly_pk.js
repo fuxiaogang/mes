@@ -1,7 +1,6 @@
 $(function () {
-
     //获取服务器的时间
-    var url = '/elec/serverDate';
+    var url = '/assembly/serverDate';
     var param = {};
     emsCommon.request({
         "url": url, "data": param, "callback": function (data) {
@@ -16,7 +15,7 @@ $(function () {
         if (!date) {
             return;
         }
-        var url = '/elec/listBoard';
+        var url = '/assembly/listBoard';
         var param = {'IN_DATE': date};
         emsCommon.request({
             "url": url, "data": param, "callback": function (data) {
@@ -75,21 +74,25 @@ $(function () {
         var html = "";
         var tdTemplate = '<tr>\n' +
             '                        <td>{pspid}</td>\n' +
-            '                        <td>{zzext}</td>\n' +
-            '                        <td>{maktx}</td>\n' +
-            '                        <td>{sname}</td>\n' +
+            '                        <td>{unumb}</td>\n' +
+            '                        <td>{unumbText}</td>\n' +
+            '                        <td>{equip}</td>\n' +
+            '                        <td>{equipText}</td>\n' +
             '                        <td>{ecodeText}</td>\n' +
             '                        <td>{zstat}</td>\n' +
+            '                        <td>{sname}</td>\n' +
             '                        <td>{beginTr}</td>\n' +
             '                        <td name="proctTr">{proctTr}</td>\n' +
             '                    </tr>'
         $(data).each(function (index, item) {
             html += tdTemplate.replace('{pspid}', item.pspid)
-                .replace('{zzext}', item.zzext)
-                .replace('{maktx}', item.maktx)
-                .replace('{sname}', item.sname)
+                .replace('{unumb}', item.unumb)
+                .replace('{unumbText}', item.unumbText)
+                .replace('{equip}', item.equip)
+                .replace('{equipText}', item.equipText)
                 .replace('{ecodeText}', item.ecodeText)
                 .replace('{zstat}', item.zstat)
+                .replace('{sname}', item.sname)
                 .replace('{beginTr}', item.beginTr)
                 .replace('{proctTr}', item.proctTr);
         });

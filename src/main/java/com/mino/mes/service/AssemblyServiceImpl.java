@@ -198,7 +198,7 @@ public class AssemblyServiceImpl {
      * @param IN_ZSTAT 状态
      * @param IN_PERNR 员工编号
      * @param IN_EQUIP 设备号
-     * @param  IN_UNUMB 单元号
+     * @param IN_UNUMB 单元号
      * @throws Exception
      */
     public void start(final String IN_ECODE, final String IN_ZSTAT, final Long IN_PERNR, final String IN_EQUIP, final String IN_UNUMB) throws Exception {
@@ -233,6 +233,81 @@ public class AssemblyServiceImpl {
         function.execute(destination);
 
         checkSapResponse(function);
+    }
+
+    /**
+     * 看版
+     *
+     * @param date
+     * @throws Exception
+     */
+    public AssemblyBoard findBoard(String date) throws Exception {
+        final String functionName = Constant.FUN_ASSEMBLY_BOARD_ZMES_IF010;
+
+        JCoDestination destination = SAPConn.getConnect();
+        JCoFunction function = destination.getRepository().getFunction(functionName);
+        JCoParameterList input = function.getImportParameterList();
+        input.setValue("IN_DATE", date);
+        function.execute(destination);
+
+        checkSapResponse(function);
+
+        JCoParameterList exportTable = function.getTableParameterList();
+        JCoTable etPlistTable = exportTable.getTable("ET_PLIST");
+
+        final List<AssemblyBoardEtPlist> assemblyBoardEtPlists = new LinkedList<>();
+        boolean loopFlag1 = !etPlistTable.isEmpty();
+        while (loopFlag1) {
+            AssemblyBoardEtPlist assemblyBoardEtPlist = new AssemblyBoardEtPlist();
+            String PSPID = etPlistTable.getString("PSPID");
+            String UNUMB = etPlistTable.getString("UNUMB");
+            String UNUMB_TEXT = etPlistTable.getString("UNUMB_TEXT");
+            String EQUIP = etPlistTable.getString("EQUIP");
+            String EQUIP_TEXT = etPlistTable.getString("EQUIP_TEXT");
+            String ECODE = etPlistTable.getString("ECODE");
+            String ECODE_TEXT = etPlistTable.getString("ECODE_TEXT");
+            String AUFNR = etPlistTable.getString("AUFNR");
+            Long PERNR = etPlistTable.getLong("PERNR");
+            String SNAME = etPlistTable.getString("SNAME");
+            String RDATE = etPlistTable.getString("RDATE");
+            String RTIME = etPlistTable.getString("RTIME");
+            Integer PROCT = etPlistTable.getInt("PROCT");
+            String BEGIN_TR = etPlistTable.getString("BEGIN_TR");
+            String PROCT_TR = etPlistTable.getString("PROCT_TR");
+            String ZSTAT = etPlistTable.getString("ZSTAT");
+
+            assemblyBoardEtPlist.setPspid(PSPID);
+            assemblyBoardEtPlist.setUnumb(UNUMB);
+            assemblyBoardEtPlist.setUnumbText(UNUMB_TEXT);
+            assemblyBoardEtPlist.setEquip(EQUIP);
+            assemblyBoardEtPlist.setEquipText(EQUIP_TEXT);
+            assemblyBoardEtPlist.setEcode(ECODE);
+            assemblyBoardEtPlist.setEcodeText(ECODE_TEXT);
+            assemblyBoardEtPlist.setAufnr(AUFNR);
+            assemblyBoardEtPlist.setPernr(PERNR);
+            assemblyBoardEtPlist.setSname(SNAME);
+            assemblyBoardEtPlist.setRdate(RDATE);
+            assemblyBoardEtPlist.setRtime(RTIME);
+            assemblyBoardEtPlist.setProct(PROCT);
+            assemblyBoardEtPlist.setBeginTr(BEGIN_TR);
+            assemblyBoardEtPlist.setProctTr(PROCT_TR);
+            assemblyBoardEtPlist.setZstat(ZSTAT);
+            assemblyBoardEtPlists.add(assemblyBoardEtPlist);
+            loopFlag1 = etPlistTable.nextRow();
+        }
+
+        JCoTable etStatus = exportTable.getTable("ET_STATUS");
+        final List<AssemblyBoardEtStatus> assemblyBoardEtStatuses = new LinkedList<>();
+        loopFlag1 = !etStatus.isEmpty();
+        while (loopFlag1) {
+            AssemblyBoardEtStatus status = new AssemblyBoardEtStatus();
+            status.setOperation(etStatus.getString("OPERATION"));
+            status.setZstat(etStatus.getString("ZSTAT"));
+            assemblyBoardEtStatuses.add(status);
+            loopFlag1 = etStatus.nextRow();
+        }
+
+        return new AssemblyBoard(assemblyBoardEtPlists, assemblyBoardEtStatuses);
     }
 
     private void checkSapResponse(JCoFunction function) throws MesException {

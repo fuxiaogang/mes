@@ -149,6 +149,7 @@ public class MesElecContoller {
 
     /**
      * 生产看板
+     *
      * @param IN_DATE
      * @return
      */
@@ -156,7 +157,7 @@ public class MesElecContoller {
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value = "/listBoard")
     public MesResponse<ElecBoard> listBoard(String IN_DATE) {
         if (StringUtils.isEmpty(IN_DATE)) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             IN_DATE = sdf.format(new Date());
         }
         Integer code = null;
@@ -178,5 +179,11 @@ public class MesElecContoller {
         return new MesResponse<>(code, msg, elecBoard);
     }
 
+    @ResponseBody
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value = "/serverDate")
+    public String serverDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(new Date());
+    }
 }
 

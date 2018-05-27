@@ -12,5 +12,6 @@ public class Constant {
     public static String FUN_ASSEMBLY_EQUIP_ZMES_IF005 = "ZMES_IF005";
     public static String FUN_ASSEMBLY_START_ZMES_IF006 = "ZMES_IF006";
     public static String FUN_ASSEMBLY_STOP_ZMES_IF007 = "ZMES_IF007";
+    public static String FUN_ASSEMBLY_BOARD_ZMES_IF010 = "ZMES_IF010";
 
 }
