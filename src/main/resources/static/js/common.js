@@ -8,13 +8,6 @@ function EmsCommon() {
 
 EmsCommon.prototype = {
 
-    test: function () {
-        /*监听加载更多*/
-        $(document).on('click', '.js-load-more', function () {
-            console.log(1212);
-        });
-    },
-
     /*
      * @param isMask 转菊花是否添加遮罩层
      */
@@ -81,7 +74,10 @@ EmsCommon.prototype = {
      */
     getBrowserHeight: function () {
         var winHeight = 0;
-        if ($(document).height()) {
+        if($(window).height()){
+            winHeight = $(window).height();
+        }
+        else if ($(document).height()) {
             winHeight = $(document).height();
         } else if (window.innerHeight) {
             winHeight = window.innerHeight;
@@ -110,13 +106,11 @@ EmsCommon.prototype = {
             callback: null
         };
         $.extend(_option, option);
-        emsCommon.loadingShow(true);
         $.post(option.url, _option.data, function (data) {
             //$(_option.selector).empty().html(data);
             if (typeof _option.callback == "function") {
                 _option.callback(data);
             }
-            emsCommon.loadingHide();
         });
     },
 
