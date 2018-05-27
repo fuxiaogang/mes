@@ -249,9 +249,8 @@ public class ElecServiceImpl {
      * @param date
      * @throws Exception
      */
-    public void findBoard(String date) throws Exception {
+    public ElecBoard findBoard(String date) throws Exception {
         final String functionName = Constant.FUN_ELEC_BOARD_ZMES_IF009;
-        final List<ElecEtPlist> datas = new LinkedList<>();
 
         JCoDestination destination = SAPConn.getConnect();
         JCoFunction function = destination.getRepository().getFunction(functionName);
@@ -264,6 +263,7 @@ public class ElecServiceImpl {
         JCoParameterList exportTable = function.getTableParameterList();
         JCoTable etPlistTable = exportTable.getTable("ET_PLIST");
 
+        final List<ElecBoardEtPlist> elecBoardEtPlists = new LinkedList<>();
         boolean loopFlag1 = !etPlistTable.isEmpty();
         while (loopFlag1) {
             ElecBoardEtPlist elecBoardEtPlist = new ElecBoardEtPlist();
@@ -281,7 +281,6 @@ public class ElecServiceImpl {
             String BEGIN_TR = etPlistTable.getString("BEGIN_TR");
             String PROCT_TR = etPlistTable.getString("PROCT_TR");
             String ZSTAT = etPlistTable.getString("ZSTAT");
-            Long EVEID = etPlistTable.getLong("EVEID");
 
             elecBoardEtPlist.setPspid(PSPID);
             elecBoardEtPlist.setMaktx(MAKTX);
@@ -297,10 +296,22 @@ public class ElecServiceImpl {
             elecBoardEtPlist.setBeginTr(BEGIN_TR);
             elecBoardEtPlist.setProctTr(PROCT_TR);
             elecBoardEtPlist.setZstat(ZSTAT);
-           // datas.add(elecBoardEtPlist);
+            elecBoardEtPlists.add(elecBoardEtPlist);
             loopFlag1 = etPlistTable.nextRow();
         }
-//        return null;
+
+        JCoTable etStatus = exportTable.getTable("ET_STATUS");
+        final List<ElecBoardEtStatus> elecBoardEtStatuses = new LinkedList<>();
+        loopFlag1 = !etStatus.isEmpty();
+        while (loopFlag1) {
+            ElecBoardEtStatus status = new ElecBoardEtStatus();
+            status.setOperation(etStatus.getString("OPERATION"));
+            status.setZstat(etStatus.getString("ZSTAT"));
+            elecBoardEtStatuses.add(status);
+            loopFlag1 = etStatus.nextRow();
+        }
+
+        return new ElecBoard(elecBoardEtPlists, elecBoardEtStatuses);
     }
 
 
