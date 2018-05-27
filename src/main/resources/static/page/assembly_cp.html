@@ -17,7 +17,7 @@
 <div class="index-wrapper" align="center">
     <div class="left">
         <div class="login">
-            <p class="title-info">登入Login</p>
+            <p class="title-info"><span>装配车间-登入Login</span></p>
             <form role="form">
                 <table class="table">
                     <tbody>
@@ -48,13 +48,26 @@
         </div>
 
         <div class="history">
-            <p class="title-info">单元信息 Unit Inf.</p>
+            <p class="title-info"><span>单元信息 Unit Inf.</span></p>
+            <table id="historyTableHead" class="table" style="margin: 0;">
+                <thead>
+                <tr><th width="50%">单元号</th><th width="50%">单元描述</th></tr>
+                </thead>
+            </table>
             <div id="unitInfTable" class="unit-inf-table">
                 <table class="table">
-                    <thead>
-                    <tr><th>单元号</th><th>单元描述</th></tr>
-                    </thead>
                     <tbody>
+                    <tr><td>12212</td><td>12212</td></tr>
+                    <tr><td>12212</td><td>12212</td></tr>
+                    <tr><td>12212</td><td>12212</td></tr>
+                    <tr><td>12212</td><td>12212</td></tr>
+                    <tr><td>12212</td><td>12212</td></tr>
+                    <tr><td>12212</td><td>12212</td></tr>
+                    <tr><td>12212</td><td>12212</td></tr>
+                    <tr><td>12212</td><td>12212</td></tr>
+                    <tr><td>12212</td><td>12212</td></tr>
+                    <tr><td>12212</td><td>12212</td></tr>
+
                     </tbody>
                 </table>
             </div>
@@ -101,23 +114,24 @@
         </div>
 
         <div class="prd-inf">
-            <p class="title-info">生产信息 Production Inf.</p>
-            <div id="prd-table" class="prd-table">
+            <p class="title-info"><span>生产信息 Production Inf.</span></p>
+            <table id="prdInfHead" class="table" style="margin: 0;">
+                <thead>
+                <tr>
+                    <th width="10%"><div>单元号</div><div>Unit</div></th>
+                    <th width="10%"><div>设备号</div><div></div>Equ</th>
+                    <th width="10%"><div>工位</div><div>ID</div> </th>
+                    <th width="10%"><div>姓名</div><div>Name</div></th>
+                    <th width="10%"><div>开始时间</div><div>From</div> </th>
+                    <th width="10%"><div>持续时间</div><div>Dur</div></th>
+                    <th width="10%"><div>状态</div><div>Sta</div></th>
+                    <th width="10%"><div>操作</div><div>Operate</div></th>
+                </tr>
+                </thead>
+            </table>
+            <div id="prd-table" class="assembly-prd-table">
                 <table class="table">
-                    <thead>
-                    <tr>
-                        <th><div>单元号</div><div>Unit</div></th>
-                        <th><div>设备号</div><div></div>Equ</th>
-                        <th><div>工位</div><div>ID</div> </th>
-                        <th><div>姓名</div><div>Name</div></th>
-                        <th><div>开始时间</div><div>From</div> </th>
-                        <th><div>持续时间</div><div>Dur</div></th>
-                        <th><div>状态</div><div>Sta</div></th>
-                        <th><div>操作</div><div>Operate</div></th>
-                    </tr>
-                    </thead>
                     <tbody>
-
                     </tbody>
                 </table>
             </div>
@@ -147,8 +161,9 @@
         var borderHeight = 10;
         var h1 = $(".login").outerHeight(true);
         var h2 = parseInt($(".title-info").outerHeight(true));
-        var tableHeight = browserHeight - (borderHeight + h1 + h2);
-        $("#historyTable").height(tableHeight);
+        var h3 = $("#historyTableHead").outerHeight(true);
+        var tableHeight = browserHeight - (borderHeight + h1 + h2 + h3);
+        $("#unitInfTable").height(tableHeight);
     }
 
     /*** 生产信息高度 ***/
@@ -157,7 +172,8 @@
         var borderHeight = 10;
         var h1 = parseInt($(".title-info").outerHeight(true)) * 2;
         var h2 = $(".project-list").outerHeight(true);
-        var tableHeight = browserHeight - (borderHeight + h1 + h2);
+        var h3 = $("#prdInfHead").outerHeight(true);
+        var tableHeight = browserHeight - (borderHeight + h1 + h2 + h3);
         $("#prd-table").height(tableHeight);
     }
 
