@@ -1,0 +1,10 @@
+#for tests only !
+#Sun May 27 11:14:34 CST 2018
+jco.client.lang=zh
+jco.destination.peak_limit=10
+jco.client.client=600
+jco.client.passwd=123456
+jco.client.user=MESCS
+jco.client.sysnr=00
+jco.destination.pool_capacity=3
+jco.client.ashost=192.168.0.17

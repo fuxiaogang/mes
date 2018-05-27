@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="../css/common.css" rel="Stylesheet" />
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
+    <script type="text/javascript" src="../js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <title>MINOP-MES</title>
+</head>
+<body>
+   <div class="electric-wrapper">
+
+       <div class="pk-title-info">
+           <span>生产管理看板</span>
+           <span>2018-5-25</span>
+           <span><a href="./index.html">返回首页</a></span>
+       </div>
+       <div class="station-status">
+         <p>工位状态 Station state</p>
+           <div class="station-status-list">
+               <ul>
+                   <li>
+                       <p>加工</p>
+                       <p class="state_green">生产</p>
+                   </li>
+                   <li>
+                       <p>安装</p>
+                       <p class="state_green">生产</p>
+                   </li>
+                   <li>
+                       <p>导轨切割</p>
+                       <p class="state_red">待机</p>
+                   </li>
+                   <li>
+                       <p>接线</p>
+                       <p class="state_green">生产</p>
+                   </li>
+                   <li>
+                       <p>拆包</p>
+                       <p class="state_red">待机</p>
+                   </li>
+                   <li>
+                       <p>接线</p>
+                       <p class="state_green">生产</p>
+                   </li>
+                   <li>
+                       <p>拆包</p>
+                       <p class="state_red">待机</p>
+                   </li>
+                   <li>
+                       <p>接线</p>
+                       <p class="state_green">生产</p>
+                   </li>
+                   <li>
+                       <p>拆包</p>
+                       <p class="state_red">待机</p>
+                   </li>
+                   <li>
+                       <p>接线</p>
+                       <p class="state_green">生产</p>
+                   </li>
+                   <li>
+                       <p class="state_red">待机</p>
+                       <p>拆包</p>
+                   </li><li>
+                   <p>接线</p>
+                   <p class="state_green">生产</p>
+               </li>
+                   <li>
+                       <p>拆包</p>
+                       <p class="state_red">待机</p>
+                   </li>
+                   <li>
+                       <p>接线</p>
+                       <p class="state_green">生产</p>
+                   </li>
+                   <li>
+                       <p>拆包</p>
+                       <p class="state_red">待机</p>
+                   </li>
+                   <li>
+                       <p>接线</p>
+                       <p class="state_green">生产</p>
+                   </li>
+                   <li>
+                       <p>拆包</p>
+                       <p class="state_red">待机</p>
+                   </li>
+                   <li>
+                       <p>接线</p>
+                       <p class="state_green">生产</p>
+                   </li>
+                   <li>
+                       <p>拆包</p>
+                       <p class="state_red">待机</p>
+                   </li>
+                   <li>
+                       <p>接线</p>
+                       <p class="state_green">生产</p>
+                   </li>
+                   <li>
+                       <p>拆包</p>
+                       <p class="state_red">待机</p>
+                   </li>
+                   <li>
+                       <p>接线</p>
+                       <p class="state_green">生产</p>
+                   </li>
+                   <li>
+                       <p>拆包</p>
+                       <p class="state_red">待机</p>
+                   </li>
+
+               </ul>
+           </div>
+
+       </div>
+
+
+       <div>
+         <p class="pk-title-info">生产信息 Production Inf.</p>
+           <div class="production-inf" id="production-inf">
+               <table class="table">
+                   <thead>
+                   <tr>
+                       <th>项目号Project</th><th>图号DrwID</th><th>电柜 Material</th><th>姓名 Name</th>
+                       <th>工位 Sta</th><th>状态 Stu</th><th>开始时间 From</th><th>持续时间 Duration</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <tr>
+                       <td>MBXX-1XXX</td>
+                       <td>MBXX-1231-123A-SDA001</td>
+                       <td>B01010001</td>
+                       <td>张三</td>
+                       <td>接线</td>
+                       <td>正常作业</td>
+                       <td>20180401 12:00:00</td>
+                       <td>00:32:01</td>
+                   </tr>
+                   <tr>
+                       <td>MBXX-1XXX</td>
+                       <td>MBXX-1231-123A-SDA001</td>
+                       <td>B01010001</td>
+                       <td>张三</td>
+                       <td>接线</td>
+                       <td>正常作业</td>
+                       <td>20180401 12:00:00</td>
+                       <td>00:32:01</td>
+                   </tr>
+                   <tr>
+                       <td>MBXX-1XXX</td>
+                       <td>MBXX-1231-123A-SDA001</td>
+                       <td>B01010001</td>
+                       <td>张三</td>
+                       <td>接线</td>
+                       <td>正常作业</td>
+                       <td>20180401 12:00:00</td>
+                       <td>00:32:01</td>
+                   </tr>
+                   <tr>
+                       <td>MBXX-1XXX</td>
+                       <td>MBXX-1231-123A-SDA001</td>
+                       <td>B01010001</td>
+                       <td>张三</td>
+                       <td>接线</td>
+                       <td>正常作业</td>
+                       <td>20180401 12:00:00</td>
+                       <td>00:32:01</td>
+                   </tr>
+                   <tr>
+                       <td>MBXX-1XXX</td>
+                       <td>MBXX-1231-123A-SDA001</td>
+                       <td>B01010001</td>
+                       <td>张三</td>
+                       <td>接线</td>
+                       <td>正常作业</td>
+                       <td>20180401 12:00:00</td>
+                       <td>00:32:01</td>
+                   </tr>
+                   <tr>
+                       <td>MBXX-1XXX</td>
+                       <td>MBXX-1231-123A-SDA001</td>
+                       <td>B01010001</td>
+                       <td>张三</td>
+                       <td>接线</td>
+                       <td>正常作业</td>
+                       <td>20180401 12:00:00</td>
+                       <td>00:32:01</td>
+                   </tr><tr>
+                       <td>MBXX-1XXX</td>
+                       <td>MBXX-1231-123A-SDA001</td>
+                       <td>B01010001</td>
+                       <td>张三</td>
+                       <td>接线</td>
+                       <td>正常作业</td>
+                       <td>20180401 12:00:00</td>
+                       <td>00:32:01</td>
+                   </tr><tr>
+                       <td>MBXX-1XXX</td>
+                       <td>MBXX-1231-123A-SDA001</td>
+                       <td>B01010001</td>
+                       <td>张三</td>
+                       <td>接线</td>
+                       <td>正常作业</td>
+                       <td>20180401 12:00:00</td>
+                       <td>00:32:01</td>
+                   </tr><tr>
+                       <td>MBXX-1XXX</td>
+                       <td>MBXX-1231-123A-SDA001</td>
+                       <td>B01010001</td>
+                       <td>张三</td>
+                       <td>接线</td>
+                       <td>正常作业</td>
+                       <td>20180401 12:00:00</td>
+                       <td>00:32:01</td>
+                   </tr><tr>
+                       <td>MBXX-1XXX</td>
+                       <td>MBXX-1231-123A-SDA001</td>
+                       <td>B01010001</td>
+                       <td>张三</td>
+                       <td>接线</td>
+                       <td>正常作业</td>
+                       <td>20180401 12:00:00</td>
+                       <td>00:32:01</td>
+                   </tr><tr>
+                       <td>MBXX-1XXX</td>
+                       <td>MBXX-1231-123A-SDA001</td>
+                       <td>B01010001</td>
+                       <td>张三</td>
+                       <td>接线</td>
+                       <td>正常作业</td>
+                       <td>20180401 12:00:00</td>
+                       <td>00:32:01</td>
+                   </tr>
+                   <tr>
+                       <td>MBXX-1XXX</td>
+                       <td>MBXX-1231-123A-SDA001</td>
+                       <td>B01010001</td>
+                       <td>张三</td>
+                       <td>接线</td>
+                       <td>正常作业</td>
+                       <td>20180401 12:00:00</td>
+                       <td>00:32:01</td>
+                   </tr>
+                   </tbody>
+               </table>
+           </div>
+           <!--加载更多按钮-->
+           <div class="js-load-more">加载更多</div>
+       </div>
+   </div>
+
+
+   <script>
+
+       $(function(){
+           /***高度控制***/
+          var browserHeight =  emsCommon.getBrowserHeight();
+          var h1 = parseInt($(".pk-title-info").outerHeight(true)) * 2;
+          var h2 = $(".station-status").outerHeight(true);
+          var tableHeight = browserHeight - (h1 + h2);
+          $("#production-inf").height(tableHeight);
+       });
+
+   </script>
+</body>
+</html>

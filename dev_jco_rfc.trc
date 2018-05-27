@@ -1,0 +1,192 @@
+
+**** Error file opened at 20180525 001950 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error:  >Fri May 25 00:19:50,153<    
+RfcException: [null]
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=183.238.57.146 SYSNR=00 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '183.238.57.146:3300' not reached
+
+TIME        Fri May 25 00:19:50 2018
+RELEASE     711
+COMPONENT   NI (network interface)
+VERSION     39
+RC          -10
+MODULE      nixxi.cpp
+LINE        3147
+DETAIL      NiPConnect2: 183.238.57.146:3300
+SYSTEM CALL connect
+ERRNO       10061
+ERRNO TEXT  WSAECONNREFUSED: Connection refused
+COUNTER     2
+
+    Return code: RFC_FAILURE(1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20180525 002301 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error:  >Fri May 25 00:23:01,358<    
+RfcException: [null]
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=183.238.57.146 SYSNR=00 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '183.238.57.146:3300' not reached
+
+TIME        Fri May 25 00:23:01 2018
+RELEASE     711
+COMPONENT   NI (network interface)
+VERSION     39
+RC          -10
+MODULE      nixxi.cpp
+LINE        3147
+DETAIL      NiPConnect2: 183.238.57.146:3300
+SYSTEM CALL connect
+ERRNO       10061
+ERRNO TEXT  WSAECONNREFUSED: Connection refused
+COUNTER     2
+
+    Return code: RFC_FAILURE(1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20180525 223032 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error:  >Fri May 25 22:30:32,931<    >RfcGetException rc (7) message: Syntax error in program SAPLZKBIF                               .
+<RfcGetException
+
+Error:  >Fri May 25 22:30:34,132<    >RfcGetException rc (7) message: Syntax error in program SAPLZKBIF                               .
+<RfcGetException
+
+Error:  >Fri May 25 22:30:35,081<    >RfcGetException rc (7) message: Syntax error in program SAPLZKBIF                               .
+<RfcGetException
+
+Error:  >Fri May 25 22:30:35,663<    >RfcGetException rc (7) message: Syntax error in program SAPLZKBIF                               .
+<RfcGetException
+
+
+**** Error file opened at 20180526 105107 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error:  >Sat May 26 10:51:07,873<    
+RfcException: [null]
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=192.168.0.17 SYSNR=00 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '192.168.0.17:3300' not reached
+
+TIME        Sat May 26 10:51:07 2018
+RELEASE     711
+COMPONENT   NI (network interface)
+VERSION     39
+RC          -10
+MODULE      nixxi.cpp
+LINE        3147
+DETAIL      NiPConnect2: 192.168.0.17:3300
+SYSTEM CALL connect
+ERRNO       10060
+ERRNO TEXT  WSAETIMEDOUT: Connection timed out
+COUNTER     2
+
+    Return code: RFC_FAILURE(1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20180526 165602 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error:  >Sat May 26 16:56:02,659<    
+RfcException: [null]
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=192.168.0.17 SYSNR=00 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '192.168.0.17:3300' not reached
+
+TIME        Sat May 26 16:56:02 2018
+RELEASE     711
+COMPONENT   NI (network interface)
+VERSION     39
+RC          -10
+MODULE      nixxi.cpp
+LINE        3147
+DETAIL      NiPConnect2: 192.168.0.17:3300
+SYSTEM CALL connect
+ERRNO       10060
+ERRNO TEXT  WSAETIMEDOUT: Connection timed out
+COUNTER     2
+
+    Return code: RFC_FAILURE(1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+Error:  >Sat May 26 16:56:23,680<    
+RfcException: [null]
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=192.168.0.17 SYSNR=00 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '192.168.0.17:3300' not reached
+
+TIME        Sat May 26 16:56:23 2018
+RELEASE     711
+COMPONENT   NI (network interface)
+VERSION     39
+RC          -10
+MODULE      nixxi.cpp
+LINE        3147
+DETAIL      NiPConnect2: 192.168.0.17:3300
+SYSTEM CALL connect
+ERRNO       10060
+ERRNO TEXT  WSAETIMEDOUT: Connection timed out
+COUNTER     2
+
+    Return code: RFC_FAILURE(1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20180527 105746 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error:  >Sun May 27 10:57:46,951<    
+RfcException: [null]
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=192.168.0.17 SYSNR=00 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '192.168.0.17:3300' not reached
+
+TIME        Sun May 27 10:57:46 2018
+RELEASE     711
+COMPONENT   NI (network interface)
+VERSION     39
+RC          -10
+MODULE      nixxi.cpp
+LINE        3147
+DETAIL      NiPConnect2: 192.168.0.17:3300
+SYSTEM CALL connect
+ERRNO       10060
+ERRNO TEXT  WSAETIMEDOUT: Connection timed out
+COUNTER     2
+
+    Return code: RFC_FAILURE(1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+Error:  >Sun May 27 10:58:07,977<    
+RfcException: [null]
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=192.168.0.17 SYSNR=00 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '192.168.0.17:3300' not reached
+
+TIME        Sun May 27 10:58:07 2018
+RELEASE     711
+COMPONENT   NI (network interface)
+VERSION     39
+RC          -10
+MODULE      nixxi.cpp
+LINE        3147
+DETAIL      NiPConnect2: 192.168.0.17:3300
+SYSTEM CALL connect
+ERRNO       10060
+ERRNO TEXT  WSAETIMEDOUT: Connection timed out
+COUNTER     2
+
+    Return code: RFC_FAILURE(1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" href="../css/common.css" rel="Stylesheet" />
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
+    <script type="text/javascript" src="../js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="../js/electric_cp.js"></script>
+    <title>MINOP-MES</title>
+</head>
+<body>
+
+<div class="index-wrapper" align="center">
+    <div class="left">
+        <div class="login">
+                <p class="title-info">登入Login</p>
+                <form role="form">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td>机台号</td>
+                            <td><input type="text" id="station-input"></td>
+                            <td><a id="stationBtn" class="common-btn">锁定</a></td>
+                        </tr>
+                        <tr>
+                            <td>类型</td>
+                            <td colspan="2">
+                                <div id="operateType" class="operate-type">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>员工号</td>
+                            <td colspan="2"><input type="text" id="pernr-input"></td>
+                        </tr>
+                        <tr>
+                            <td>图号</td>
+                            <td colspan="2"><input type="text" id="zzext-input"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="submit-btn"><a class="common-btn" id="startBtn">确定上机</a></div>
+                </form>
+        </div>
+
+        <div class="history">
+            <p class="title-info">历史信息Hist.</p>
+            <div  id="historyTable" class="history-table">
+                <table class="table" id="hisTable">
+                    <thead>
+                    <tr><th>人员</th><th>开始时间</th><th>工位</th></tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="order-inf">
+            <p class="title-info">
+                <span class="title-info-left">订单信息 Order Inf.</span>
+                <span class="title-info-right">
+                    <a href="#">查看图纸</a>
+                    <a href="./index.html">返回首页</a>
+                </span>
+            </p>
+            <div class="project-list">
+                <ul>
+                    <li>
+                        <p>项目号Project</p>
+                        <p id="order_pspid"></p>
+                    </li>
+                    <li>
+                        <p>物料编号Material</p>
+                        <p id="order_matnr"></p>
+                    </li>
+                    <li>
+                        <p>物料描述Mat Description</p>
+                        <p id="order_maktx"></p>
+                    </li>
+                    <li>
+                        <p>加工数量Quantity</p>
+                        <p id="order_psmng"></p>
+                    </li>
+                    <li>
+                        <p>计划开始时间From</p>
+                        <p id="order_usr08"></p>
+                    </li>
+                    <li>
+                        <p>计划完成时间To</p>
+                        <p id="order_usr09"></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="prd-inf">
+            <p class="title-info">生产信息 Production Inf.</p>
+            <div id="prd-table" class="prd-table">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>图号DrwID</th>
+                        <th>员工号 ID</th>
+                        <th>姓名 Name</th>
+                        <th>开始时间 From</th>
+                        <th>持续时间 Dur</th>
+                        <th>工位 Sta</th>
+                        <th>状态 Stu</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--加载更多按钮-->
+        <div class="js-load-more">加载更多</div>
+
+    </div>
+</div>
+
+    <script>
+        $(function(){
+
+            /***高度控制***/
+            productionHeight();
+            historyHeight();
+
+            /***机台号-锁定按钮***/
+            var station = stationBtnToggle();
+            $("#stationBtn").click(function (){
+                station.toggle();
+            });
+
+        });
+
+
+
+        /***历史信息***/
+        function historyHeight(){
+            var browserHeight =  emsCommon.getBrowserHeight();
+            var borderHeight = 10;
+            var h1 = $(".login").outerHeight(true);
+            var h2 = parseInt($(".title-info").outerHeight(true));
+            var tableHeight = browserHeight - (borderHeight + h1 + h2);
+            $("#historyTable").height(tableHeight);
+        }
+
+        /*** 生产信息高度 ***/
+        function productionHeight(){
+            var browserHeight =  emsCommon.getBrowserHeight();
+            var borderHeight = 10;
+            var h1 = parseInt($(".title-info").outerHeight(true)) * 2;
+            var h2 = $(".project-list").outerHeight(true);
+            var tableHeight = browserHeight - (borderHeight + h1 + h2);
+            $("#prd-table").height(tableHeight);
+        }
+
+        /***机台号-锁定按钮***/
+        function stationBtnToggle() {
+            var isLock = false;
+            var toggle = function(){
+                if(!isLock){
+                    isLock = true;
+                    $("#station-input").attr("disabled","disabled");
+                    $("#stationBtn").text("解锁");
+                }else{
+                    isLock = false;
+                    $("#station-input").removeAttr("disabled");
+                    $("#stationBtn").text("锁定");
+                }
+            };
+            return {"isLock":isLock,"toggle":toggle};
+        }
+    </script>
+
+</body>
+</html>

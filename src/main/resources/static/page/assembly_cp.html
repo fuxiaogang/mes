@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" href="../css/common.css" rel="Stylesheet" />
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
+    <script type="text/javascript" src="../js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <title>MINOP-MES</title>
+</head>
+<body>
+
+<div class="index-wrapper" align="center">
+    <div class="left">
+        <div class="login">
+            <p class="title-info">登入Login</p>
+            <form role="form">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td><div>机台号</div><div>Station ID</div></td>
+                        <td><input type="text" id="station-input"></td>
+                        <td><a id="stationBtn" class="common-btn">锁定</a></td>
+                    </tr>
+                    <tr>
+                        <td><div>类型</div><div>Type</div></td>
+                        <td colspan="2">
+                            <div id="operateType" class="operate-type">
+                                <label><input type="radio" name="type" checked>正常作业</label>
+                                <label><input type="radio" name="type">准备动作</label>
+                                <label><input type="radio" name="type">问题处理</label>
+                                <label><input type="radio" name="type" >正常作业</label>
+                                <label><input type="radio" name="type">准备动作</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><div>员工号</div><div>Emp ID</div></td>
+                        <td colspan="2"><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><div>设备号</div><div>Equ ID</div></td>
+                        <td colspan="2"><input type="text"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="submit-btn"><a class="common-btn">确定上机</a></div>
+            </form>
+        </div>
+
+        <div class="history">
+            <p class="title-info">单元信息 Unit Inf.</p>
+            <div id="historyTable" class="history-table">
+                <table class="table">
+                    <thead>
+                    <tr><th>人员</th><th>开始时间</th><th>工位</th></tr>
+                    </thead>
+                    <tbody>
+                    <tr><td>傅大爷</td><td>20180101</td><td>25</td></tr>
+                    <tr><td>傅大爷</td><td>20180101</td><td>23</td></tr>
+                    <tr><td>傅大爷</td><td>20180101</td><td>24</td></tr>
+                    <tr><td>傅大爷</td><td>20180101</td><td>23</td></tr>
+                    <tr><td>傅大爷</td><td>20180101</td><td>24</td></tr>
+                    <tr><td>傅大爷</td><td>20180101</td><td>23</td></tr>
+                    <tr><td>傅大爷</td><td>20180101</td><td>24</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="order-inf">
+            <p class="title-info">
+                <span class="title-info-left">订单信息 Order Inf.</span>
+                <span class="title-info-right">
+                    <a href="#">查看图纸</a>
+                    <a href="./index.html">返回首页</a>
+                </span>
+            </p>
+            <div class="project-list">
+                <ul>
+                    <li>
+                        <p>项目号Project111111111111111111</p>
+                        <p>MXXX-1801</p>
+                    </li>
+                    <li>
+                        <p>项目号Project</p>
+                        <p>MXXX-1801</p>
+                    </li>
+                    <li>
+                        <p>项目号Project</p>
+                        <p>MXXX-1801</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="prd-inf">
+            <p class="title-info">生产信息 Production Inf.</p>
+            <div id="prd-table" class="prd-table">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th><div>单元号</div><div>Unit</div></th>
+                        <th><div>设备号</div><div></div>Equ</th>
+                        <th><div>工位</div><div>ID</div> </th>
+                        <th><div>姓名</div><div>Name</div></th>
+                        <th><div>开始时间</div><div>From</div> </th>
+                        <th><div>持续时间</div><div>Dur</div></th>
+                        <th><div>状态</div><div>Sta</div></th>
+                        <th><div>操作</div><div>Operate</div></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>MBXX-1231-123A-SDA</td>
+                        <td>100001</td>
+                        <td>傅大爷</td>
+                        <td>20180401 12:00:00</td>
+                        <td>00:32:01</td>
+                        <td>接线</td>
+                        <td>正常作业</td>
+                        <td><a>结束</a></td>
+                    </tr>
+                    <tr>
+                        <td>MBXX-1231-123A-SDA</td>
+                        <td>100001</td>
+                        <td>傅大爷</td>
+                        <td>20180401 12:00:00</td>
+                        <td>00:32:01</td>
+                        <td>接线</td>
+                        <td>正常作业</td>
+                        <td><a>结束</a></td>
+                    </tr>
+                    <tr>
+                        <td>MBXX-1231-123A-SDA</td>
+                        <td>100001</td>
+                        <td>傅大爷</td>
+                        <td>20180401 12:00:00</td>
+                        <td>00:32:01</td>
+                        <td>接线</td>
+                        <td>正常作业</td>
+                        <td><a>结束</a></td>
+                    </tr>
+                    <tr>
+                        <td>MBXX-1231-123A-SDA</td>
+                        <td>100001</td>
+                        <td>傅大爷</td>
+                        <td>20180401 12:00:00</td>
+                        <td>00:32:01</td>
+                        <td>接线</td>
+                        <td>正常作业</td>
+                        <td><a>结束</a></td>
+                    </tr>
+                    <tr>
+                        <td>MBXX-1231-123A-SDA</td>
+                        <td>100001</td>
+                        <td>傅大爷</td>
+                        <td>20180401 12:00:00</td>
+                        <td>00:32:01</td>
+                        <td>接线</td>
+                        <td>正常作业</td>
+                        <td><a>结束</a></td>
+                    </tr>
+                    <tr>
+                        <td>MBXX-1231-123A-SDA</td>
+                        <td>100001</td>
+                        <td>傅大爷</td>
+                        <td>20180401 12:00:00</td>
+                        <td>00:32:01</td>
+                        <td>接线</td>
+                        <td>正常作业</td>
+                        <td><a>结束</a></td>
+                    </tr>
+                    <tr>
+                        <td>MBXX-1231-123A-SDA</td>
+                        <td>100001</td>
+                        <td>傅大爷</td>
+                        <td>20180401 12:00:00</td>
+                        <td>00:32:01</td>
+                        <td>接线</td>
+                        <td>正常作业</td>
+                        <td><a>结束</a></td>
+                    </tr>
+                    <tr>
+                        <td>MBXX-1231-123A-SDA</td>
+                        <td>100001</td>
+                        <td>傅大爷</td>
+                        <td>20180401 12:00:00</td>
+                        <td>00:32:01</td>
+                        <td>接线</td>
+                        <td>正常作业</td>
+                        <td><a>结束</a></td>
+                    </tr>
+                    <tr>
+                        <td>MBXX-1231-123A-SDA</td>
+                        <td>100001</td>
+                        <td>傅大爷</td>
+                        <td>20180401 12:00:00</td>
+                        <td>00:32:01</td>
+                        <td>接线</td>
+                        <td>正常作业</td>
+                        <td><a>结束</a></td>
+                    </tr>
+
+                    <tr>
+                        <td>MBXX-1231-123A-SDA</td>
+                        <td>100001</td>
+                        <td>傅大爷</td>
+                        <td>20180401 12:00:00</td>
+                        <td>00:32:01</td>
+                        <td>接线</td>
+                        <td>正常作业</td>
+                        <td><a>结束</a></td>
+                    </tr>
+                    <tr>
+                        <td>MBXX-1231-123A-SDA</td>
+                        <td>100001</td>
+                        <td>傅大爷</td>
+                        <td>20180401 12:00:00</td>
+                        <td>00:32:01</td>
+                        <td>接线</td>
+                        <td>正常作业</td>
+                        <td><a>结束</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+
+        /***高度控制***/
+        productionHeight();
+        historyHeight();
+
+        /***机台号-锁定按钮***/
+        var station = stationBtnToggle();
+        $("#stationBtn").click(function (){
+            station.toggle();
+        });
+
+        /***请求类型数据***/
+        //requestType();
+    });
+
+
+    /***请求类型数据***/
+    function requestType(){
+        emsCommon.request({"url":"/elec/listEtPlist","data":{"ECODE":"ME010"},"callback":function(data){
+            var html = "";
+            data = JSON.parse(data);
+            $(data).each(function (index,element) {
+                html += '<label><input type="radio" name="type" value="'+element.ecode+'" >'+element.zstat+'</label>';
+            });
+            $("#operateType").empty().append(html);
+        }});
+    }
+
+
+    /***历史信息***/
+    function historyHeight(){
+        var browserHeight =  emsCommon.getBrowserHeight();
+        var borderHeight = 10;
+        var h1 = $(".login").outerHeight(true);
+        var h2 = parseInt($(".title-info").outerHeight(true));
+        var tableHeight = browserHeight - (borderHeight + h1 + h2);
+        $("#historyTable").height(tableHeight);
+    }
+
+    /*** 生产信息高度 ***/
+    function productionHeight(){
+        var browserHeight =  emsCommon.getBrowserHeight();
+        var borderHeight = 10;
+        var h1 = parseInt($(".title-info").outerHeight(true)) * 2;
+        var h2 = $(".project-list").outerHeight(true);
+        var tableHeight = browserHeight - (borderHeight + h1 + h2);
+        $("#prd-table").height(tableHeight);
+    }
+
+    /***机台号-锁定按钮***/
+    function stationBtnToggle() {
+        var isLock = false;
+        var toggle = function(){
+            if(!isLock){
+                isLock = true;
+                $("#station-input").attr("disabled","disabled");
+                $("#stationBtn").text("解锁");
+            }else{
+                isLock = false;
+                $("#station-input").removeAttr("disabled");
+                $("#stationBtn").text("锁定");
+            }
+        };
+        return {"isLock":isLock,"toggle":toggle};
+    }
+</script>
+
+</body>
+</html>
