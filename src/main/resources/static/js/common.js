@@ -44,6 +44,28 @@ EmsCommon.prototype = {
         return data && /^[0-9]+$/.test(data);
     },
 
+    addSecond: function (time) {
+        if (!time || time.split(':') < 3) {
+            return '00:00:00';
+        }
+        var timeArray = time.split(':');
+        var hour = parseInt(timeArray[0]);
+        var min = parseInt(timeArray[1]);
+        var second = parseInt(timeArray[2]);
+
+        if (second < 59) {
+            second = second + 1;
+        } else {
+            second = 0;
+            if (min < 59) {
+                min = min + 1;
+            } else {
+                min = 0;
+                hour = hour + 1;
+            }
+        }
+        return hour + ':' + (min < 10 ? '0' + min : min) + ':' + (second < 10 ? '0' + second : second);
+    },
 
     /**
      * @summary loading隐藏去除方法
@@ -74,7 +96,7 @@ EmsCommon.prototype = {
      */
     getBrowserHeight: function () {
         var winHeight = 0;
-        if($(window).height()){
+        if ($(window).height()) {
             winHeight = $(window).height();
         }
         else if ($(document).height()) {

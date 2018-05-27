@@ -73,9 +73,7 @@ $(function () {
     setInterval(function () {
         $('td[name="proctTr"]').each(function () {
             var dura = $(this).text();
-            if (emsCommon.isNum(dura)) {
-                $(this).text(parseInt(dura) + 1);
-            }
+            $(this).text(emsCommon.addSecond(dura));
         });
     }, 1000);
 

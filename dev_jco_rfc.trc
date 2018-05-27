@@ -258,3 +258,37 @@ RfcException: [System <empty>|192.168.0.17/00]
     Return code: RFC_CLOSED(6)
     error group: 109
     key: RFC_ERROR_CANCELLED
+
+**** Error file opened at 20180527 172413 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error: [1] >Sun May 27 17:24:13,599<    
+RfcException: [System <empty>|192.168.0.17/00]
+    message: Handle close pending
+    Return code: RFC_CLOSED(6)
+    error group: 109
+    key: RFC_ERROR_CANCELLED
+Error: [1] >Sun May 27 17:24:17,499<    
+RfcException: [System DEV|sapdev]
+    message: connection closed without message (CM_NO_DATA_RECEIVED)
+    Return code: RFC_CLOSED(6)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+Error: [2] >Sun May 27 17:24:28,965<    
+RfcException: [System DEV|sapdev]
+    message: connection closed without message (CM_NO_DATA_RECEIVED)
+    Return code: RFC_CLOSED(6)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20180527 172612 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error: [1] >Sun May 27 17:26:12,885<    
+RfcException: [System DEV|sapdev]
+    message: connection closed without message (CM_NO_DATA_RECEIVED)
+    Return code: RFC_CLOSED(6)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+Error: [4] >Sun May 27 17:28:26,128<    
+RfcException: [System DEV|sapdev]
+    message: connection closed without message (CM_NO_DATA_RECEIVED)
+    Return code: RFC_CLOSED(6)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
