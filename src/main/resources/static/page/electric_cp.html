@@ -17,7 +17,7 @@
 <div class="index-wrapper" align="center">
     <div class="left">
         <div class="login">
-                <p class="title-info">登入Login</p>
+                <p class="title-info"><span>电气车间-登入Login</span></p>
                 <form role="form">
                     <table class="table">
                         <tbody>
@@ -48,13 +48,20 @@
         </div>
 
         <div class="history">
-            <p class="title-info">历史信息Hist.</p>
+            <p class="title-info"><span>历史信息Hist.</span></p>
+            <table id="historyTableHead" class="table" style="margin: 0;">
+                <thead>
+                <tr><th width="30%">人员</th><th width="30%">开始时间</th><th width="30%">工位</th></tr>
+                </thead>
+            </table>
             <div  id="historyTable" class="history-table">
                 <table class="table" id="hisTable">
-                    <thead>
-                    <tr><th>人员</th><th>开始时间</th><th>工位</th></tr>
-                    </thead>
                     <tbody>
+                    <tr>
+                        <td>aaa</td>
+                        <td>bbb</td>
+                        <td>ccc</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -101,29 +108,28 @@
         </div>
 
         <div class="prd-inf">
-            <p class="title-info">生产信息 Production Inf.</p>
+            <p class="title-info"><span>生产信息 Production Inf.</span></p>
+            <table id="prdInfHead" class="table" style="margin: 0;">
+                <thead>
+                <tr>
+                    <th width="20%"><div>图号</div><div>DrwID</div></th>
+                    <th width="10%"><div>员工号</div><div>ID</div></th>
+                    <th width="10%"><div>姓名</div><div>Name</div> </th>
+                    <th width="20%"><div>开始时间</div><div>From</div></th>
+                    <th width="10%"><div>持续时间</div><div>Dur</div></th>
+                    <th width="10%"><div>工位</div><div>Sta</div></th>
+                    <th width="10%"><div>状态</div><div>Stu</div> </th>
+                    <th width="10%"><div>操作</div></th>
+                </tr>
+                </thead>
+            </table>
             <div id="prd-table" class="prd-table">
                 <table class="table">
-                    <thead>
-                    <tr>
-                        <th>图号DrwID</th>
-                        <th>员工号 ID</th>
-                        <th>姓名 Name</th>
-                        <th>开始时间 From</th>
-                        <th>持续时间 Dur</th>
-                        <th>工位 Sta</th>
-                        <th>状态 Stu</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
                     <tbody>
                     </tbody>
                 </table>
             </div>
         </div>
-        <!--加载更多按钮-->
-        <div class="js-load-more">加载更多</div>
-
     </div>
 </div>
 
@@ -150,7 +156,9 @@
             var borderHeight = 10;
             var h1 = $(".login").outerHeight(true);
             var h2 = parseInt($(".title-info").outerHeight(true));
-            var tableHeight = browserHeight - (borderHeight + h1 + h2);
+            var h3 = $("#historyTableHead").outerHeight(true);
+            var tableHeight = browserHeight - (borderHeight + h1 + h2 + h3);
+            console.log(borderHeight + h1 + h2);
             $("#historyTable").height(tableHeight);
         }
 
@@ -160,7 +168,8 @@
             var borderHeight = 10;
             var h1 = parseInt($(".title-info").outerHeight(true)) * 2;
             var h2 = $(".project-list").outerHeight(true);
-            var tableHeight = browserHeight - (borderHeight + h1 + h2);
+            var h3 = $("#prdInfHead").outerHeight(true);
+            var tableHeight = browserHeight - (borderHeight + h1 + h2 +h3);
             $("#prd-table").height(tableHeight);
         }
 
@@ -175,6 +184,7 @@
                 }else{
                     isLock = false;
                     $("#station-input").removeAttr("disabled");
+                    $("#station-input").focus();
                     $("#stationBtn").text("锁定");
                 }
             };
