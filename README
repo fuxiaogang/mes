@@ -1,0 +1,7 @@
+把libs目录下的sapjco3.jar发布到本地仓库，并在pom.xml中添加依賴：
+1.mvn install:install-file -Dfile=E:\myworkspace\mes\libs\sapjco3.jar -DgroupId=sap -DartifactId=sapjco3 -Dversion=3.0 -Dpackaging=jar
+2.<dependency>
+      <groupId>sap</groupId>
+      <artifactId>sapjco3</artifactId>
+      <version>3.0</version>
+  </dependency>

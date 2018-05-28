@@ -1,80 +1,14 @@
 
-**** Error file opened at 20180525 001950 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error:  >Fri May 25 00:19:50,153<    
+**** Error file opened at 20180528 154628 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error:  >Mon May 28 15:46:28,108<    
 RfcException: [null]
     message: Connect to SAP gateway failed
-Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=183.238.57.146 SYSNR=00 PCS=1
-
-LOCATION    CPIC (TCP/IP) on local host with Unicode
-ERROR       partner '183.238.57.146:3300' not reached
-
-TIME        Fri May 25 00:19:50 2018
-RELEASE     711
-COMPONENT   NI (network interface)
-VERSION     39
-RC          -10
-MODULE      nixxi.cpp
-LINE        3147
-DETAIL      NiPConnect2: 183.238.57.146:3300
-SYSTEM CALL connect
-ERRNO       10061
-ERRNO TEXT  WSAECONNREFUSED: Connection refused
-COUNTER     2
-
-    Return code: RFC_FAILURE(1)
-    error group: 102
-    key: RFC_ERROR_COMMUNICATION
-
-**** Error file opened at 20180525 002301 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error:  >Fri May 25 00:23:01,358<    
-RfcException: [null]
-    message: Connect to SAP gateway failed
-Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=183.238.57.146 SYSNR=00 PCS=1
-
-LOCATION    CPIC (TCP/IP) on local host with Unicode
-ERROR       partner '183.238.57.146:3300' not reached
-
-TIME        Fri May 25 00:23:01 2018
-RELEASE     711
-COMPONENT   NI (network interface)
-VERSION     39
-RC          -10
-MODULE      nixxi.cpp
-LINE        3147
-DETAIL      NiPConnect2: 183.238.57.146:3300
-SYSTEM CALL connect
-ERRNO       10061
-ERRNO TEXT  WSAECONNREFUSED: Connection refused
-COUNTER     2
-
-    Return code: RFC_FAILURE(1)
-    error group: 102
-    key: RFC_ERROR_COMMUNICATION
-
-**** Error file opened at 20180525 223032 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error:  >Fri May 25 22:30:32,931<    >RfcGetException rc (7) message: Syntax error in program SAPLZKBIF                               .
-<RfcGetException
-
-Error:  >Fri May 25 22:30:34,132<    >RfcGetException rc (7) message: Syntax error in program SAPLZKBIF                               .
-<RfcGetException
-
-Error:  >Fri May 25 22:30:35,081<    >RfcGetException rc (7) message: Syntax error in program SAPLZKBIF                               .
-<RfcGetException
-
-Error:  >Fri May 25 22:30:35,663<    >RfcGetException rc (7) message: Syntax error in program SAPLZKBIF                               .
-<RfcGetException
-
-
-**** Error file opened at 20180526 105107 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error:  >Sat May 26 10:51:07,873<    
-RfcException: [null]
-    message: Connect to SAP gateway failed
-Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=192.168.0.17 SYSNR=00 PCS=1
+Connection parameters: TYPE=A DEST=sapconnect ASHOST=192.168.0.17 SYSNR=00 PCS=1
 
 LOCATION    CPIC (TCP/IP) on local host with Unicode
 ERROR       partner '192.168.0.17:3300' not reached
 
-TIME        Sat May 26 10:51:07 2018
+TIME        Mon May 28 15:46:28 2018
 RELEASE     711
 COMPONENT   NI (network interface)
 VERSION     39
@@ -91,16 +25,16 @@ COUNTER     2
     error group: 102
     key: RFC_ERROR_COMMUNICATION
 
-**** Error file opened at 20180526 165602 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error:  >Sat May 26 16:56:02,659<    
+**** Error file opened at 20180528 161348 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error:  >Mon May 28 16:13:48,934<    
 RfcException: [null]
     message: Connect to SAP gateway failed
-Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=192.168.0.17 SYSNR=00 PCS=1
+Connection parameters: TYPE=A DEST=sapconnect ASHOST=192.168.0.17 SYSNR=00 PCS=1
 
 LOCATION    CPIC (TCP/IP) on local host with Unicode
 ERROR       partner '192.168.0.17:3300' not reached
 
-TIME        Sat May 26 16:56:02 2018
+TIME        Mon May 28 16:13:48 2018
 RELEASE     711
 COMPONENT   NI (network interface)
 VERSION     39
@@ -114,219 +48,5 @@ ERRNO TEXT  WSAETIMEDOUT: Connection timed out
 COUNTER     2
 
     Return code: RFC_FAILURE(1)
-    error group: 102
-    key: RFC_ERROR_COMMUNICATION
-Error:  >Sat May 26 16:56:23,680<    
-RfcException: [null]
-    message: Connect to SAP gateway failed
-Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=192.168.0.17 SYSNR=00 PCS=1
-
-LOCATION    CPIC (TCP/IP) on local host with Unicode
-ERROR       partner '192.168.0.17:3300' not reached
-
-TIME        Sat May 26 16:56:23 2018
-RELEASE     711
-COMPONENT   NI (network interface)
-VERSION     39
-RC          -10
-MODULE      nixxi.cpp
-LINE        3147
-DETAIL      NiPConnect2: 192.168.0.17:3300
-SYSTEM CALL connect
-ERRNO       10060
-ERRNO TEXT  WSAETIMEDOUT: Connection timed out
-COUNTER     2
-
-    Return code: RFC_FAILURE(1)
-    error group: 102
-    key: RFC_ERROR_COMMUNICATION
-
-**** Error file opened at 20180527 105746 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error:  >Sun May 27 10:57:46,951<    
-RfcException: [null]
-    message: Connect to SAP gateway failed
-Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=192.168.0.17 SYSNR=00 PCS=1
-
-LOCATION    CPIC (TCP/IP) on local host with Unicode
-ERROR       partner '192.168.0.17:3300' not reached
-
-TIME        Sun May 27 10:57:46 2018
-RELEASE     711
-COMPONENT   NI (network interface)
-VERSION     39
-RC          -10
-MODULE      nixxi.cpp
-LINE        3147
-DETAIL      NiPConnect2: 192.168.0.17:3300
-SYSTEM CALL connect
-ERRNO       10060
-ERRNO TEXT  WSAETIMEDOUT: Connection timed out
-COUNTER     2
-
-    Return code: RFC_FAILURE(1)
-    error group: 102
-    key: RFC_ERROR_COMMUNICATION
-Error:  >Sun May 27 10:58:07,977<    
-RfcException: [null]
-    message: Connect to SAP gateway failed
-Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=192.168.0.17 SYSNR=00 PCS=1
-
-LOCATION    CPIC (TCP/IP) on local host with Unicode
-ERROR       partner '192.168.0.17:3300' not reached
-
-TIME        Sun May 27 10:58:07 2018
-RELEASE     711
-COMPONENT   NI (network interface)
-VERSION     39
-RC          -10
-MODULE      nixxi.cpp
-LINE        3147
-DETAIL      NiPConnect2: 192.168.0.17:3300
-SYSTEM CALL connect
-ERRNO       10060
-ERRNO TEXT  WSAETIMEDOUT: Connection timed out
-COUNTER     2
-
-    Return code: RFC_FAILURE(1)
-    error group: 102
-    key: RFC_ERROR_COMMUNICATION
-
-**** Error file opened at 20180527 144359 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error:  >Sun May 27 14:43:59,704<    
-RfcException: [null]
-    message: Connect to SAP gateway failed
-Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=192.168.0.17 SYSNR=00 PCS=1
-
-LOCATION    CPIC (TCP/IP) on local host with Unicode
-ERROR       partner '192.168.0.17:3300' not reached
-
-TIME        Sun May 27 14:43:59 2018
-RELEASE     711
-COMPONENT   NI (network interface)
-VERSION     39
-RC          -10
-MODULE      nixxi.cpp
-LINE        3147
-DETAIL      NiPConnect2: 192.168.0.17:3300
-SYSTEM CALL connect
-ERRNO       10060
-ERRNO TEXT  WSAETIMEDOUT: Connection timed out
-COUNTER     2
-
-    Return code: RFC_FAILURE(1)
-    error group: 102
-    key: RFC_ERROR_COMMUNICATION
-
-**** Error file opened at 20180527 154424 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error:  >Sun May 27 15:44:24,619<    
-RfcException: [null]
-    message: Connect to SAP gateway failed
-Connection parameters: TYPE=A DEST=ABAP_AS_WITH_POOL ASHOST=192.168.0.17 SYSNR=00 PCS=1
-
-LOCATION    CPIC (TCP/IP) on local host with Unicode
-ERROR       partner '192.168.0.17:3300' not reached
-
-TIME        Sun May 27 15:44:24 2018
-RELEASE     711
-COMPONENT   NI (network interface)
-VERSION     39
-RC          -10
-MODULE      nixxi.cpp
-LINE        3147
-DETAIL      NiPConnect2: 192.168.0.17:3300
-SYSTEM CALL connect
-ERRNO       10060
-ERRNO TEXT  WSAETIMEDOUT: Connection timed out
-COUNTER     2
-
-    Return code: RFC_FAILURE(1)
-    error group: 102
-    key: RFC_ERROR_COMMUNICATION
-
-**** Error file opened at 20180527 160202 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error: [1] >Sun May 27 16:02:02,576<    
-RfcException: [System <empty>|192.168.0.17/00]
-    message: Handle close pending
-    Return code: RFC_CLOSED(6)
-    error group: 109
-    key: RFC_ERROR_CANCELLED
-
-**** Error file opened at 20180527 165539 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error: [1] >Sun May 27 16:55:39,507<    
-RfcException: [System <empty>|192.168.0.17/00]
-    message: Handle close pending
-    Return code: RFC_CLOSED(6)
-    error group: 109
-    key: RFC_ERROR_CANCELLED
-
-**** Error file opened at 20180527 172413 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error: [1] >Sun May 27 17:24:13,599<    
-RfcException: [System <empty>|192.168.0.17/00]
-    message: Handle close pending
-    Return code: RFC_CLOSED(6)
-    error group: 109
-    key: RFC_ERROR_CANCELLED
-Error: [1] >Sun May 27 17:24:17,499<    
-RfcException: [System DEV|sapdev]
-    message: connection closed without message (CM_NO_DATA_RECEIVED)
-    Return code: RFC_CLOSED(6)
-    error group: 102
-    key: RFC_ERROR_COMMUNICATION
-Error: [2] >Sun May 27 17:24:28,965<    
-RfcException: [System DEV|sapdev]
-    message: connection closed without message (CM_NO_DATA_RECEIVED)
-    Return code: RFC_CLOSED(6)
-    error group: 102
-    key: RFC_ERROR_COMMUNICATION
-
-**** Error file opened at 20180527 172612 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error: [1] >Sun May 27 17:26:12,885<    
-RfcException: [System DEV|sapdev]
-    message: connection closed without message (CM_NO_DATA_RECEIVED)
-    Return code: RFC_CLOSED(6)
-    error group: 102
-    key: RFC_ERROR_COMMUNICATION
-Error: [4] >Sun May 27 17:28:26,128<    
-RfcException: [System DEV|sapdev]
-    message: connection closed without message (CM_NO_DATA_RECEIVED)
-    Return code: RFC_CLOSED(6)
-    error group: 102
-    key: RFC_ERROR_COMMUNICATION
-
-**** Error file opened at 20180527 180620 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error: [1] >Sun May 27 18:06:20,621<    
-RfcException: [System DEV|sapdev]
-    message: connection closed without message (CM_NO_DATA_RECEIVED)
-    Return code: RFC_CLOSED(6)
-    error group: 102
-    key: RFC_ERROR_COMMUNICATION
-
-**** Error file opened at 20180527 192135 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error: [4] >Sun May 27 19:21:35,734<    
-RfcException: [System <empty>|192.168.0.17/00]
-    message: Handle close pending
-    Return code: RFC_CLOSED(6)
-    error group: 109
-    key: RFC_ERROR_CANCELLED
-Error: [4] >Sun May 27 19:21:47,609<    
-RfcException: [System DEV|sapdev]
-    message: connection closed without message (CM_NO_DATA_RECEIVED)
-    Return code: RFC_CLOSED(6)
-    error group: 102
-    key: RFC_ERROR_COMMUNICATION
-
-**** Error file opened at 20180527 194357 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error: [1] >Sun May 27 19:43:57,307<    
-RfcException: [System DEV|sapdev]
-    message: connection closed without message (CM_NO_DATA_RECEIVED)
-    Return code: RFC_CLOSED(6)
-    error group: 102
-    key: RFC_ERROR_COMMUNICATION
-
-**** Error file opened at 20180528 131216 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
-Error: [2] >Mon May 28 13:12:16,015<    
-RfcException: [System DEV|sapdev]
-    message: connection closed without message (CM_NO_DATA_RECEIVED)
-    Return code: RFC_CLOSED(6)
     error group: 102
     key: RFC_ERROR_COMMUNICATION

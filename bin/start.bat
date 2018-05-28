@@ -1,0 +1,1 @@
+java -jar -Dapplog.path=c:/logs/mes mes.jar
