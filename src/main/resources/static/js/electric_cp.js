@@ -59,9 +59,8 @@ $(function () {
      * 停止
      */
     $('#prd-table').on('click', 'a[name="stopBtn"]', function () {
-        var dura = $(this).closest('tr').find('td[name="proctTd"]').eq(0).text();
+        var dura = $(this).closest('tr').find('td[name="proctTr"]').eq(0).text();
         var sname = $(this).closest('tr').find('td[name="snameTd"]').eq(0).text();
-        dura = emsCommon.formatDura(dura);
         if (confirm(sname + '已经执行任务' + dura + ',确定结束当前任务？')) {
             var eveid = $(this).attr('data-eveid');
             var ecode = $(this).attr('data-ecode');
@@ -71,11 +70,9 @@ $(function () {
 
     //定时刷新时长
     setInterval(function () {
-        $('td[name="proctTd"]').each(function () {
+        $('td[name="proctTr"]').each(function () {
             var dura = $(this).text();
-            if (emsCommon.isNum(dura)) {
-                $(this).text(parseInt(dura) + 1);
-            }
+            $(this).text(emsCommon.addSecond(dura));
         });
     }, 1000);
 
@@ -114,8 +111,8 @@ $(function () {
                     '                        <td>{zzext}</td>\n' +
                     '                        <td>{pernr}</td>\n' +
                     '                        <td name="snameTd">{sname}</td>\n' +
-                    '                        <td>{rdate} {rtime}</td>\n' +
-                    '                        <td name="proctTd">{proct}</td>\n' +
+                    '                        <td>{beginTr}</td>\n' +
+                    '                        <td name="proctTr">{proctTr}</td>\n' +
                     '                        <td>{ecodeText}</td>\n' +
                     '                        <td>{zstat}</td>\n' +
                     '                        <td><a name="stopBtn" data-eveid="{eveid}"  data-ecode="{ecode}" href="javascript:void(0)" >结束</a></td>\n' +
@@ -124,9 +121,8 @@ $(function () {
                     html += tdTemplate.replace('{zzext}', item.zzext)
                         .replace('{pernr}', item.pernr)
                         .replace('{sname}', item.sname)
-                        .replace('{rdate}', item.rdate)
-                        .replace('{rtime}', item.rtime)
-                        .replace('{proct}', item.proct)
+                        .replace('{beginTr}', item.beginTr)
+                        .replace('{proctTr}', item.proctTr)
                         .replace('{ecodeText}', item.ecodeText)
                         .replace('{zstat}', item.zstat)
                         .replace('{eveid}', item.eveid)
