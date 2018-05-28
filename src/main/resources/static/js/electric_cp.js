@@ -52,7 +52,14 @@ $(function () {
             alert('请输入图号!')
             return;
         }
-        start(ecode, stats, pernr, zzext);
+        var tip = '机台号:' + ecode + '\n' +
+            '状态:' + stats + '\n' +
+            '工号:' + pernr + '\n' +
+            '图号:' + zzext + '\n';
+        tip += '确认上机？';
+        if (confirm(tip)) {
+            start(ecode, stats, pernr, zzext);
+        }
     });
 
     /**
@@ -67,6 +74,30 @@ $(function () {
             stop(eveid, ecode);
         }
     });
+
+    $('#viewImg').click(function () {
+        var statsUrl = '/elec/viewImg';
+        var zzext = $('#zzextData').val();
+        if (!zzext) {
+            alert('没有选择图号');
+            return;
+        }
+        var param = {'IN_ZZEXT': zzext};
+        emsCommon.request({
+            "url": statsUrl, "data": param, "callback": function (data) {
+                if (data.code == 200) {
+                    var path = data.data.outPath;
+                    if (path && path != '') {
+                        window.open(path)
+                    } else {
+                        alert(zzext + '没有可查看的图纸');
+                    }
+                } else {
+                    alert(data.msg);
+                }
+            }
+        });
+    })
 
     //定时刷新时长
     setInterval(function () {
@@ -174,6 +205,7 @@ $(function () {
     function buildOrder(zzext) {
         var url = '/elec/listEsOrder';
         var param = {'IN_ZZEXT': zzext};
+        $('#zzextData').val(zzext);
         emsCommon.request({
             "url": url, "data": param, "callback": function (data) {
                 $('#order_pspid').text(data.pspid);

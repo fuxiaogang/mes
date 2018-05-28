@@ -180,6 +180,34 @@ public class MesElecContoller {
     }
 
     @ResponseBody
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value = "/viewImg")
+    public MesResponse<ElecImg> viewImg(String IN_ZZEXT) {
+        ElecImg elecImg = null;
+        Integer code = null;
+        String msg = null;
+        if (StringUtils.isEmpty(IN_ZZEXT)) {
+            msg = "图号不能为空";
+            code = MesResponse.ERROR_CODE;
+        }
+        if (msg == null) {
+            try {
+                elecImg = elecService.viewImg(IN_ZZEXT);
+                code = MesResponse.SUCCESS_CODE;
+                msg = MesResponse.SUCCESS_MSG;
+            } catch (MesException e) {
+                logger.error(e.getMessage());
+                code = MesResponse.ERROR_CODE;
+                msg = e.getMessage();
+            } catch (Exception e) {
+                logger.error(e.getMessage());
+                code = MesResponse.ERROR_CODE;
+                msg = MesResponse.ERROR_MSG;
+            }
+        }
+        return new MesResponse<>(code, msg, elecImg);
+    }
+
+    @ResponseBody
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value = "/serverDate")
     public String serverDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

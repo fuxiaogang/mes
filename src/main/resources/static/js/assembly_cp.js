@@ -36,6 +36,7 @@ $(function () {
         var stats = $("input[name='stats-input']:checked").val();
         var pernr = $('#pernr-input').val();
         var equip = $('#equip-input').val();
+        var unumb = $("input[name='unitSelect']:checked").val();
         if (!ecode) {
             alert('请输入机台号!')
             return;
@@ -52,8 +53,20 @@ $(function () {
             alert('请输入设备号!')
             return;
         }
-        //UNUMB
-        start(ecode, stats, pernr, equip, '');
+        if (!unumb) {
+            unumb = '';
+        }
+        var tip = '机台号:' + ecode + '\n' +
+            '状态:' + stats + '\n' +
+            '工号:' + pernr + '\n' +
+            '设备号:' + equip + '\n';
+        if (unumb != '') {
+            tip += '单元号:' + unumb + '\n';
+        }
+        tip += '确认上机？';
+        if (confirm(tip)) {
+            start(ecode, stats, pernr, equip, unumb);
+        }
     });
 
     /**
@@ -151,7 +164,7 @@ $(function () {
     }
 
     /**
-     * 刷新历史信息
+     * 刷新单元信息
      * @param zzext
      */
     function refreshUnitTable(equip) {
@@ -162,9 +175,9 @@ $(function () {
                 if (data) {
                     if (data.code == 200) {
                         var html = "";
-                        var tdTemplate = ' <tr><td>{unumb}</td><td>{uname}</td></tr>'
+                        var tdTemplate = '<tr><td>{unumb}</td><td>{uname}</td><td><div class="cb" ><input type="radio" name="unitSelect" value="{unumb}"/></div></td></tr>'
                         $(data.data).each(function (index, item) {
-                            html += tdTemplate.replace('{unumb}', item.unumb)
+                            html += tdTemplate.replace(/{unumb}/g, item.unumb)
                                 .replace('{uname}', item.uname);
                         });
                         $("#unitInfTable tbody").html(html);
@@ -257,7 +270,7 @@ $(function () {
                 if (data) {
                     if (data.code == 200) {
                         refreshPTable(ecode);
-                    }else{
+                    } else {
                         alert(data);
                     }
                 }

@@ -322,3 +322,11 @@ RfcException: [System DEV|sapdev]
     Return code: RFC_CLOSED(6)
     error group: 102
     key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20180528 131216 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error: [2] >Mon May 28 13:12:16,015<    
+RfcException: [System DEV|sapdev]
+    message: connection closed without message (CM_NO_DATA_RECEIVED)
+    Return code: RFC_CLOSED(6)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION

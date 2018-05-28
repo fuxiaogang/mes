@@ -314,6 +314,26 @@ public class ElecServiceImpl {
         return new ElecBoard(elecBoardEtPlists, elecBoardEtStatuses);
     }
 
+    /**
+     * 查看图纸
+     *
+     * @param IN_ZZEXT 图号
+     * @throws Exception
+     */
+    public ElecImg viewImg(final String IN_ZZEXT) throws Exception {
+        final String functionName = Constant.FUN_ELEC_IMG_ZMES_IF004;
+
+        JCoDestination destination = SAPConn.getConnect();
+        JCoFunction function = destination.getRepository().getFunction(functionName);
+        JCoParameterList input = function.getImportParameterList();
+        input.setValue("IN_ZZEXT", IN_ZZEXT);
+        function.execute(destination);
+
+        checkSapResponse(function);
+
+        String OUT_PATH = function.getExportParameterList().getString("OUT_PATH");
+        return new ElecImg(OUT_PATH);
+    }
 
     private void checkSapResponse(JCoFunction function) throws MesException {
         String msg = function.getExportParameterList().getString("OUT_MESSAGE");
