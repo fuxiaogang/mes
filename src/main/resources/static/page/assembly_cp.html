@@ -35,11 +35,11 @@
                     </tr>
                     <tr>
                         <td><div>员工号</div><div>Emp ID</div></td>
-                        <td colspan="2"><input type="text" id="pernr-input"></td>
+                        <td colspan="2"><input type="text" id="pernr-input" class="emp-input"></td>
                     </tr>
                     <tr>
                         <td><div>设备号</div><div>Equ ID</div></td>
-                        <td colspan="2"><input type="text" id="equip-input"></td>
+                        <td colspan="2"><input type="text" id="equip-input" class="equ-input"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -49,15 +49,18 @@
 
         <div class="history">
             <p class="title-info"><span>单元信息 Unit Inf.</span></p>
-            <table id="historyTableHead" class="table" style="margin: 0;">
-                <thead>
-                <tr><th width="40%">单元号</th><th width="40%">单元描述</th><th width="20%">选择</th></tr>
-                </thead>
-            </table>
+            <div id="unitInfTableHeadWrap">
+                <table id="historyTableHead" class="table" style="margin: 0;border-bottom:1px solid #000000;">
+                    <tbody>
+                    <tr><th width="20%">单元号</th><th width="70%">单元描述</th><th width="10%">选择</th></tr>
+                    </tbody>
+                </table>
+            </div>
+
             <div id="unitInfTable" class="unit-inf-table">
                 <table class="table">
                     <tbody>
-                    <!--<tr><td>qqqq</td><td>qqqq</td><td><div class="cb"><input type="radio" /></div></td></tr>-->
+                    <!--<tr><td >qwqwqwqwq</td><td>adsfdsafasdf</td><td><input type="radio"></td></tr>-->
                     </tbody>
                 </table>
             </div>
@@ -104,23 +107,29 @@
 
         <div class="prd-inf">
             <p class="title-info"><span>生产信息 Production Inf.</span></p>
-            <table id="prdInfHead" class="table" style="margin: 0;">
-                <thead>
-                <tr>
-                    <th width="10%"><div>单元号</div><div>Unit</div></th>
-                    <th width="10%"><div>设备号</div><div></div>Equ</th>
-                    <th width="10%"><div>工位</div><div>ID</div> </th>
-                    <th width="10%"><div>姓名</div><div>Name</div></th>
-                    <th width="10%"><div>开始时间</div><div>From</div> </th>
-                    <th width="10%"><div>持续时间</div><div>Dur</div></th>
-                    <th width="10%"><div>状态</div><div>Sta</div></th>
-                    <th width="10%"><div>操作</div><div>Operate</div></th>
-                </tr>
-                </thead>
-            </table>
+            <div id="prdInfHeadWrap">
+                <table id="prdInfHead" class="table" style="margin: 0;">
+                    <thead>
+                    <tr>
+                        <th width="10%"><div>单元号</div><div>Unit</div></th>
+                        <th width="10%"><div>设备号</div><div></div>Equ</th>
+                        <th width="10%"><div>工位</div><div>ID</div> </th>
+                        <th width="10%"><div>姓名</div><div>Name</div></th>
+                        <th width="10%"><div>开始时间</div><div>From</div> </th>
+                        <th width="10%"><div>持续时间</div><div>Dur</div></th>
+                        <th width="10%"><div>状态</div><div>Sta</div></th>
+                        <th width="10%"><div>操作</div><div>Operate</div></th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
             <div id="prd-table" class="assembly-prd-table">
                 <table class="table">
                     <tbody>
+                    <!--<tr>
+                        <td>asdfdaasdf</td><td>asdfsdafasfa</td><td>aaa</td>
+                        <td>asdfdasf</td><td>asdfsdafasfa</td><td>aaa</td><td>asdfdasf</td><td><a name="stopBtn">结束</a></td>
+                    </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -141,7 +150,36 @@
             station.toggle();
         });
 
+
+        /***表头固定-单元信息***/
+        if($("#unitInfTable").outerWidth() - $("#unitInfTable .table").outerWidth() > 3){
+            $("#unitInfTableHeadWrap").css({"overflow-y": "scroll"});
+        }
+
+        /***表头固定-生产信息***/
+        if($("#prd-table").outerWidth() - $("#prd-table .table").outerWidth() > 3){
+            $("#prdInfHeadWrap").css({"overflow-y": "scroll"});
+        }
+        /***表头固定-生产信息-宽度***/
+        $("#prd-table .table tr").eq(0).children().each(function(index,value){
+            var tempWidth = $(value).outerWidth();
+            $("#prdInfHead tr th").eq(index).css({'width':tempWidth+"px"});
+        });
+
+        /***高亮***/
+        $("#prd-table .table tr td:last-child a").click(function(){
+            $(this).parents("tr").addClass("selected").siblings().removeClass("selected");
+        });
+
     });
+
+    function isScroll(ele) {
+        var obj=document.getElementById(ele);
+        if(obj.scrollHeight>obj.clientHeight||obj.offsetHeight>obj.clientHeight){
+            return true;
+        }
+        return false;
+    }
 
 
     /***历史信息***/

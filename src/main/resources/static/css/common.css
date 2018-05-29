@@ -7,6 +7,7 @@ a{text-decoration : none!important; }
 .ems-loading-mask{ position: fixed;  top: 0;  right: 0;  bottom: 0;  left: 0;  overflow: hidden;  outline: 0;  -webkit-overflow-scrolling: touch;  background-color: rgb(0, 0, 0);  filter: alpha(opacity=60);  background-color: rgba(0, 0, 0, 0.6);  z-index: 9998; }
 .ems-loading{ width:100%;height:100%;background: url(../img/loading.gif) no-repeat;position:absolute;top:50%;left:50%; margin:-40px 0 0 -40px;z-index: 9999;}
 .js-load-more{  padding:0 15px;  width:120px;  height:30px;  background-color:#D31733;  color:#fff;  line-height:30px;  text-align:center;  border-radius:5px;  margin:20px auto;  border:0 none;  font-size:16px;  cursor: pointer;  display:none;  }
+.selected{background:rgba(255,204,0,0.3);}
 /***首页***/
 .index-wrapper{ width: 100%; height:100%;margin: 0 auto; overflow: hidden;}
 .index-img{width: 100%; height: 100%;float: left;display: inline-block;}
@@ -31,11 +32,16 @@ a{text-decoration : none!important; }
 .login .table tr td:nth-child(1){width: 20%;}
 .title-info-right a {margin-right: 10px;color: #fff;}
 .title-info-right{float: right;}
-.project-list{width:100%;height: 100px;overflow-y: auto;}
+.project-list{width:100%;height: 100px;text-align:left; overflow-y: auto;}
+.project-list ul li p:nth-child(1){font-weight: bold;}
 .prd-table{height: 400px;border:1px solid #000000;overflow-y: auto;}
 .prd-table .table tr td{width: 10%;}
 .prd-table .table tr td:nth-child(1){width: 20%;}
 .prd-table .table tr td:nth-child(4){width: 20%;}
+.login .emp-input{width:300px;}
+.login .pic-input{width:300px;}
+.login .equ-input{width:300px;}
+
 /***电气车间看板***/
 .electric-wrapper{width: 100%;height: 100%;}
 .pk-title-info{width: 100%;height:45px;border:1px solid #122b40 ;background: #ffcc00;text-align: left;line-height: 45px;font-weight:bold;clear: both;margin:0px; text-align: center;font-size: 20px;}
@@ -49,6 +55,10 @@ a{text-decoration : none!important; }
 .state_green{color: #00CC00;}
 .state_red{color: #ff0000;}
 .history .history-table{height: 200px;overflow-y: auto;}
+.history .history-table tr td {word-break: break-all;}
+.history .history-table tr td:nth-child(1){width: 30%;}
+.history .history-table tr td:nth-child(2){width: 30%;}
+.history .history-table tr td:nth-child(4){width: 40%;}
 .production-inf{height: 280px;overflow-y: auto;}
 .production-inf .table{word-break: break-all;}
 .production-inf .table tr td:nth-child(1){width: 10%;}
@@ -62,17 +72,17 @@ a{text-decoration : none!important; }
 .pk-title-info .form_datetime {width: 150px;height: 30px;}
 /***装配上机操作***/
 .unit-inf-table{overflow-y: auto;}
-.unit-inf-table .table tr td{width: 40%;}
-.unit-inf-table .table tr td:nth-child(3){width: 20%;}
-.unit-inf-table .table tr td div.cb{width: 80px;}
+.unit-inf-table .table tr td{word-break: break-all;}
+.unit-inf-table .table tr td:nth-child(1){ width:20%;}
+.unit-inf-table .table tr td:nth-child(2){ width:70%;}
+.unit-inf-table .table tr td:nth-child(3){ width:10%;}
+.unit-inf-table .table tr td div.cb{margin-left:10px;width: 80px;}
 .assembly-prd-table{border:1px solid #000000;overflow-y: auto;}
 .assembly-prd-table .table tr td{width:10%;}
 /***装配车间看板***/
 .assemble-prd-inf{height: 280px;overflow-y: auto;}
 .assemble-prd-inf .table{word-break: break-all;}
 .assemble-prd-inf .table tr td {width: 10%;}
-
-
 
 
 

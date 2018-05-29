@@ -9,8 +9,6 @@
     <link type="text/css" href="../js/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="Stylesheet"/>
     <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../js/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
-    <script type="text/javascript" src="../js/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript" src="../js/electric_pk.js"></script>
     <title>MINOP-MES</title>
@@ -20,8 +18,7 @@
 
     <div class="pk-title-info">
         <span>电气车间-生产管理看板</span>
-        <span>
-            <input type="text" value="" id="dateSelect" placeholder="日期 Date" class="form_datetime">
+        <span id="dateSelect">
         </span>
         <span><a href="./index.html">返回首页</a></span>
     </div>
@@ -35,23 +32,29 @@
 
     <div>
         <p class="pk-title-info">生产信息 Production Inf.</p>
-        <table id="productionHead" class="table production-head" style="margin: 0;">
-            <thead>
-            <tr>
-                <th width="10%"><div>项目号</div><div>Project</div></th>
-                <th width="20%"><div>图号</div><div>DrwID</div></th>
-                <th width="10%"><div>电柜</div><div>Material</div></th>
-                <th width="10%"><div>姓名</div><div>Name</div></th>
-                <th width="10%"><div>工位</div><div>Sta</div></th>
-                <th width="10%"><div>状态</div><div>Stu</div></th>
-                <th width="20%"><div>开始时间</div><div>From</div></th>
-                <th width="10%"><div>持续时间</div><div>Duration</div></th>
-            </tr>
-            </thead>
-        </table>
+        <div id="productionHeadWrap">
+            <table id="productionHead" class="table production-head" style="margin: 0;">
+                <thead>
+                <tr>
+                    <th width="10%"><div>项目号</div><div>Project</div></th>
+                    <th width="20%"><div>图号</div><div>DrwID</div></th>
+                    <th width="10%"><div>电柜</div><div>Material</div></th>
+                    <th width="10%"><div>姓名</div><div>Name</div></th>
+                    <th width="10%"><div>工位</div><div>Sta</div></th>
+                    <th width="10%"><div>状态</div><div>Stu</div></th>
+                    <th width="20%"><div>开始时间</div><div>From</div></th>
+                    <th width="10%"><div>持续时间</div><div>Duration</div></th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+
         <div class="production-inf" id="productionInf">
             <table class="table" id="prd-table">
                 <tbody>
+               <!-- <tr>
+                    <td>12121asddddddddddddddd21</td><td>1212121</td><td>1212121</td><td>1212121</td><td>1212121</td>
+                </tr>-->
                 </tbody>
             </table>
         </div>
@@ -70,16 +73,17 @@
         var tableHeight = browserHeight - (h1 + h2 + h3);
         $("#productionInf").height(tableHeight);
 
-        /***日期控件***/
-        $("#dateSelect").datetimepicker({
-            language:  'zh-CN',
-            format: 'yyyy-mm-dd',//显示格式
-            todayHighlight: 1,//今天高亮
-            minView: "month",//设置只显示到月份
-            startView:2,
-            forceParse: 0,
-            showMeridian: 1,
-            autoclose: 1//选择后自动关闭
+        /***日期***/
+        $("#dateSelect").text((new Date()).Format("yyyy-MM-dd"));
+
+        /***表头固定-生产信息-滚动条***/
+        if($("#productionInf").outerWidth() - $("#productionInf .table").outerWidth() > 3){
+            $("#productionHeadWrap").css({"overflow-y": "scroll"});
+        }
+        /***表头固定-生产信息-宽度***/
+        $("#productionInf .table tr").eq(0).children().each(function(index,value){
+            var tempWidth = $(value).outerWidth();
+            $("#productionHeadWrap .table tr th").eq(index).css({'width':tempWidth+"px"});
         });
 
     });

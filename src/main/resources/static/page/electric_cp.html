@@ -35,11 +35,11 @@
                         </tr>
                         <tr>
                             <td>员工号</td>
-                            <td colspan="2"><input type="text" id="pernr-input"></td>
+                            <td colspan="2"><input type="text" id="pernr-input" class="emp-input"></td>
                         </tr>
                         <tr>
                             <td>图号</td>
-                            <td colspan="2"><input type="text" id="zzext-input"></td>
+                            <td colspan="2"><input type="text" id="zzext-input" class="pic-input"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -49,14 +49,17 @@
 
         <div class="history">
             <p class="title-info"><span>历史信息Hist.</span></p>
-            <table id="historyTableHead" class="table" style="margin: 0;">
-                <thead>
-                <tr><th width="30%">人员</th><th width="30%">开始时间</th><th width="30%">工位</th></tr>
-                </thead>
-            </table>
+            <div id="historyTableHeadWrap">
+                <table id="historyTableHead" class="table" style="margin: 0;">
+                    <thead>
+                    <tr><th width="30%">人员</th><th width="30%">开始时间</th><th width="40%">工位</th></tr>
+                    </thead>
+                </table>
+            </div>
             <div  id="historyTable" class="history-table">
                 <table class="table" id="hisTable">
                     <tbody>
+                    <!--<tr><td>asdfdasa</td><td>asdfsdafasfa</td><td>工位</td></tr>-->
                     </tbody>
                 </table>
             </div>
@@ -105,23 +108,29 @@
 
         <div class="prd-inf">
             <p class="title-info"><span>生产信息 Production Inf.</span></p>
-            <table id="prdInfHead" class="table" style="margin: 0;">
-                <thead>
-                <tr>
-                    <th width="20%"><div>图号</div><div>DrwID</div></th>
-                    <th width="10%"><div>员工号</div><div>ID</div></th>
-                    <th width="10%"><div>姓名</div><div>Name</div> </th>
-                    <th width="20%"><div>开始时间</div><div>From</div></th>
-                    <th width="10%"><div>持续时间</div><div>Dur</div></th>
-                    <th width="10%"><div>工位</div><div>Sta</div></th>
-                    <th width="10%"><div>状态</div><div>Stu</div> </th>
-                    <th width="10%"><div>操作</div><div>Operate</div></th>
-                </tr>
-                </thead>
-            </table>
+            <div id="prdInfHeadWrap">
+                <table id="prdInfHead" class="table" style="margin: 0;">
+                    <thead>
+                    <tr>
+                        <th width="20%"><div>图号</div><div>DrwID</div></th>
+                        <th width="10%"><div>员工号</div><div>ID</div></th>
+                        <th width="10%"><div>姓名</div><div>Name</div> </th>
+                        <th width="20%"><div>开始时间</div><div>From</div></th>
+                        <th width="10%"><div>持续时间</div><div>Dur</div></th>
+                        <th width="10%"><div>工位</div><div>Sta</div></th>
+                        <th width="10%"><div>状态</div><div>Stu</div> </th>
+                        <th width="10%"><div>操作</div><div>Operate</div></th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
             <div id="prd-table" class="prd-table">
                 <table class="table">
                     <tbody>
+                   <!-- <tr>
+                        <td>asdfdaasdf</td><td>asdfsdafasfa</td><td>工位</td>
+                        <td>asdfdasf</td><td>asdfsdafasfa</td><td>工位</td><td>asdfdasf</td><td><a name="stopBtn">结束</a></td>
+                    </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -141,6 +150,25 @@
             $("#stationBtn").click(function (){
                 station.toggle();
             });
+
+            /***表头固定-历史信息***/
+            if($("#historyTable").outerWidth() - $("#historyTable .table").outerWidth() > 3){
+                $("#historyTableHeadWrap").css({"overflow-y": "scroll"});
+            }
+            /***表头固定-生产信息-滚动条***/
+            if($("#prd-table").outerWidth() - $("#prd-table .table").outerWidth() > 3){
+                $("#prdInfHeadWrap").css({"overflow-y": "scroll"});
+            }
+            /***表头固定-生产信息-宽度***/
+             $("#prd-table .table tr").eq(0).children().each(function(index,value){
+             var tempWidth = $(value).outerWidth();
+             $("#prdInfHeadWrap .table tr th").eq(index).css({'width':tempWidth+"px"});
+             });
+
+             /***高亮***/
+             $("#prd-table .table tr td:last-child a").click(function(){
+                   $(this).parents("tr").addClass("selected").siblings().removeClass("selected");
+             });
 
         });
 
