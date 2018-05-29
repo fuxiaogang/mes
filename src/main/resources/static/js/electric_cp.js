@@ -7,25 +7,60 @@ $(function () {
      * 机台失去焦点：1.请求生产信息，2.请求状态信息
      */
     $('#station-input').blur(function () {
-        var ecode = $(this).val();
+        loaddataByEcode();
+    });
+
+    /**
+     * 机台回车触发
+     */
+    $('#station-input').keyup(function (event) {
+        if (event.keyCode == 13) {
+            loaddataByEcode();
+        }
+    });
+
+    function loaddataByEcode() {
+        var ecode = $('#station-input').val();
         if (!ecode) {
             return;
         }
         buildStatsInput(ecode);
         refreshPTable(ecode);
+    }
+
+    /**
+     * 员工号回车
+     */
+    $('#pernr-input').keyup(function (event) {
+        if (event.keyCode == 13) {
+            $('#zzext-input').focus();
+        }
     });
 
     /**
      * 图号失去焦点：1.请求历史信息，2.请求订单信息
      */
     $('#zzext-input').blur(function () {
-        var zzext = $(this).val();
+        loaddataByZzext();
+    });
+
+    /**
+     * 图号回车触发
+     */
+    $('#zzext-input').keyup(function (event) {
+        if (event.keyCode == 13) {
+            loaddataByZzext();
+        }
+    });
+
+    function loaddataByZzext() {
+        var zzext = $('#zzext-input').val();
         if (!zzext) {
             return;
         }
         refreshHistoryTable(zzext);
         buildOrder(zzext)
-    });
+    }
 
 
     /**
@@ -66,6 +101,7 @@ $(function () {
      * 停止
      */
     $('#prd-table').on('click', 'a[name="stopBtn"]', function () {
+        $(this).closest('tr').addClass('selected');
         var dura = $(this).closest('tr').find('td[name="proctTr"]').eq(0).text();
         var sname = $(this).closest('tr').find('td[name="snameTd"]').eq(0).text();
         if (confirm(sname + '已经执行任务' + dura + ',确定结束当前任务？')) {
@@ -73,6 +109,7 @@ $(function () {
             var ecode = $(this).attr('data-ecode');
             stop(eveid, ecode);
         }
+        $(this).closest('tr').removeClass('selected');
     });
 
     $('#viewImg').click(function () {
@@ -142,7 +179,7 @@ $(function () {
                     '                        <td>{zzext}</td>\n' +
                     '                        <td>{pernr}</td>\n' +
                     '                        <td name="snameTd">{sname}</td>\n' +
-                    '                        <td>{beginTr}</td>\n' +
+                    '                        <td>{rdate} {rtime}</td>\n' +
                     '                        <td name="proctTr">{proctTr}</td>\n' +
                     '                        <td>{ecodeText}</td>\n' +
                     '                        <td>{zstat}</td>\n' +
@@ -152,7 +189,8 @@ $(function () {
                     html += tdTemplate.replace('{zzext}', item.zzext)
                         .replace('{pernr}', item.pernr)
                         .replace('{sname}', item.sname)
-                        .replace('{beginTr}', item.beginTr)
+                        .replace('{rdate}', item.rdate)
+                        .replace('{rtime}', item.rtime ? item.rtime.substr(0, 5) : '00:00')
                         .replace('{proctTr}', item.proctTr)
                         .replace('{ecodeText}', item.ecodeText)
                         .replace('{zstat}', item.zstat)

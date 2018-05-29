@@ -1,44 +1,34 @@
 $(function () {
-    //获取服务器的时间
-    var url = '/assembly/serverDate';
-    var param = {};
-    emsCommon.request({
-        "url": url, "data": param, "callback": function (data) {
-            if (data) {
-                $('#dateSelect').val(data);
-            }
+    function now() {
+        var dateObj = new Date();
+        var year = dateObj.getFullYear();//年
+        var month = dateObj.getMonth()+1;//月  (注意：月份+1)
+        var date = dateObj.getDate();//日
+        var hours = dateObj.getHours();//小时
+        var minutes = dateObj.getMinutes();//分钟
+        var seconds = dateObj.getSeconds();//秒
+        if(month<10){
+            month = "0"+month;
         }
-    });
+        if(date<10){
+            date = "0"+date;
+        }
+        if(hours<10){
+            hours = "0"+hours;
+        }
+        if(minutes<10){
+            minutes = "0"+minutes;
+        }
+        if(seconds<10){
+            seconds = "0"+seconds;
+        }
+        var newDate = year+"-"+month+"-"+date+" "+hours+":"+minutes+":"+seconds;
+        $('#dateSelect').val( newDate);
+    }
+    now();
+    setInterval(function() {now()},1000);
 
-    $('#dateSelect').change(function () {
-        var date = $(this).val();
-        if (!date) {
-            return;
-        }
-        var url = '/assembly/listBoard';
-        var param = {'IN_DATE': date};
-        emsCommon.request({
-            "url": url, "data": param, "callback": function (data) {
-                if (data) {
-                    if (data.code == 200) {
-                        buildStatus(data.data.etStatuss);
-                        refreshPTable(data.data.etPlists);
-                    } else {
-                        alert(data.msg);
-                    }
-                }
-            }
-        });
-    });
-
-    /**
-     * 日期回车触发刷新
-     */
-    $('#dateSelect').keyup(function (event) {
-        if (event.keyCode == 13) {
-            $('#dateSelect').change();
-        }
-    });
+    loaddata();
 
     //定时刷新时长
     setInterval(function () {
@@ -50,9 +40,27 @@ $(function () {
 
     //定时刷新整个页面
     setInterval(function () {
-        $('#dateSelect').change();
+       loaddata();
     }, 60000);
 
+    /**
+     * 加载数据
+     */
+    function loaddata() {
+        var url = '/assembly/listBoard';
+        emsCommon.request({
+            "url": url, "data": {}, "callback": function (data) {
+                if (data) {
+                    if (data.code == 200) {
+                        buildStatus(data.data.etStatuss);
+                        refreshPTable(data.data.etPlists);
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            }
+        });
+    }
 
     function buildStatus(data) {
         var html = "";
@@ -81,7 +89,7 @@ $(function () {
             '                        <td>{ecodeText}</td>\n' +
             '                        <td>{zstat}</td>\n' +
             '                        <td>{sname}</td>\n' +
-            '                        <td>{beginTr}</td>\n' +
+            '                        <td>{rdate} {rtime}</td>\n' +
             '                        <td name="proctTr">{proctTr}</td>\n' +
             '                    </tr>'
         $(data).each(function (index, item) {
@@ -93,7 +101,8 @@ $(function () {
                 .replace('{ecodeText}', item.ecodeText)
                 .replace('{zstat}', item.zstat)
                 .replace('{sname}', item.sname)
-                .replace('{beginTr}', item.beginTr)
+                .replace('{rdate}', item.rdate)
+                .replace('{rtime}', item.rtime ? item.rtime.substr(0,5) : '00:00')
                 .replace('{proctTr}', item.proctTr);
         });
         $("#prd-table tbody").html(html);

@@ -7,25 +7,60 @@ $(function () {
      * 机台失去焦点：1.请求生产信息，2.请求状态信息
      */
     $('#station-input').blur(function () {
-        var ecode = $(this).val();
+        loaddataByEcode();
+    });
+
+    /**
+     * 机台回车触发
+     */
+    $('#station-input').keyup(function (event) {
+        if (event.keyCode == 13) {
+            loaddataByEcode();
+        }
+    });
+
+    function loaddataByEcode() {
+        var ecode = $('#station-input').val();
         if (!ecode) {
             return;
         }
         buildStatsInput(ecode);
         refreshPTable(ecode);
+    }
+
+    /**
+     * 员工号回车
+     */
+    $('#pernr-input').keyup(function (event) {
+        if (event.keyCode == 13) {
+            $('#equip-input').focus();
+        }
     });
 
     /**
      * 设备号失去焦点：1.请求单元信息，2.请求订单信息
      */
     $('#equip-input').blur(function () {
-        var equip = $(this).val();
+        loaddataByZzext();
+    });
+
+    /**
+     * 设备号回车触发
+     */
+    $('#equip-input').keyup(function (event) {
+        if (event.keyCode == 13) {
+            loaddataByZzext();
+        }
+    });
+
+    function loaddataByZzext() {
+        var equip = $('#equip-input').val();
         if (!equip) {
             return;
         }
         refreshUnitTable(equip);
         buildOrder(equip)
-    });
+    }
 
 
     /**
@@ -73,6 +108,7 @@ $(function () {
      * 停止
      */
     $('#prd-table').on('click', 'a[name="stopBtn"]', function () {
+        $(this).closest('tr').addClass('selected');
         var dura = $(this).closest('tr').find('td[name="proctTr"]').eq(0).text();
         var sname = $(this).closest('tr').find('td[name="snameTd"]').eq(0).text();
         if (confirm(sname + '已经执行任务' + dura + ',确定结束当前任务？')) {
@@ -80,6 +116,7 @@ $(function () {
             var ecode = $(this).attr('data-ecode');
             stop(eveid, ecode);
         }
+        $(this).closest('tr').removeClass('selected');
     });
 
     //定时刷新时长
@@ -109,6 +146,7 @@ $(function () {
                         });
                         $("#operateType").html(html);
                     } else {
+                        $("#operateType").html('');
                         console.log(data.msg);
                     }
                 }
@@ -133,7 +171,7 @@ $(function () {
                             '                        <td>{equip}</td>\n' +
                             '                        <td>{ecodeText}</td>\n' +
                             '                        <td name="snameTd">{sname}</td>\n' +
-                            '                        <td>{beginTr}</td>\n' +
+                            '                        <td>{rdate} {rtime}</td>\n' +
                             '                        <td name="proctTr">{proctTr}</td>\n' +
                             '                        <td>{zstat}</td>\n' +
                             '                        <td><a name="stopBtn" data-eveid="{eveid}"  data-ecode="{ecode}" href="javascript:void(0)" >结束</a></td>\n' +
@@ -143,7 +181,8 @@ $(function () {
                                 .replace('{equip}', item.equip)
                                 .replace('{ecodeText}', item.ecodeText)
                                 .replace('{sname}', item.sname)
-                                .replace('{beginTr}', item.beginTr)
+                                .replace('{rdate}', item.rdate)
+                                .replace('{rtime}', item.rtime ? item.rtime.substr(0,5) : '00:00')
                                 .replace('{proctTr}', item.proctTr)
                                 .replace('{zstat}', item.zstat)
                                 .replace('{eveid}', item.eveid)
@@ -156,6 +195,7 @@ $(function () {
                             refreshPTable(ecode)
                         }, 60000);
                     } else {
+                        $("#prd-table tbody").html('');
                         console.log(data.msg);
                     }
                 }
@@ -182,6 +222,7 @@ $(function () {
                         });
                         $("#unitInfTable tbody").html(html);
                     } else {
+                        clearUnitTable();
                         console.log(data.msg);
                     }
                 }
@@ -214,6 +255,7 @@ $(function () {
                         $('#order_usr08').text(data.data.usr08);
                         $('#order_usr09').text(data.data.usr09);
                     } else {
+                        clearOrder();
                         console.log(data.msg);
                     }
                 }
