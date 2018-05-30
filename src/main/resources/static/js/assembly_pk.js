@@ -23,7 +23,7 @@ $(function () {
             seconds = "0"+seconds;
         }
         var newDate = year+"-"+month+"-"+date+" "+hours+":"+minutes+":"+seconds;
-        $('#dateSelect').val( newDate);
+        $('#dateSelect').text( newDate);
     }
     now();
     setInterval(function() {now()},1000);

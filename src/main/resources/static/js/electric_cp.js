@@ -101,7 +101,6 @@ $(function () {
      * 停止
      */
     $('#prd-table').on('click', 'a[name="stopBtn"]', function () {
-        $(this).closest('tr').addClass('selected');
         var dura = $(this).closest('tr').find('td[name="proctTr"]').eq(0).text();
         var sname = $(this).closest('tr').find('td[name="snameTd"]').eq(0).text();
         if (confirm(sname + '已经执行任务' + dura + ',确定结束当前任务？')) {
@@ -109,7 +108,11 @@ $(function () {
             var ecode = $(this).attr('data-ecode');
             stop(eveid, ecode);
         }
-        $(this).closest('tr').removeClass('selected');
+    });
+
+    $('#prd-table').on('mouseover', 'td', function () {
+        $('#prd-table tr').removeClass('selected');
+        $(this).closest('tr').addClass('selected');
     });
 
     $('#viewImg').click(function () {
