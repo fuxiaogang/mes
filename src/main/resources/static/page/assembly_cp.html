@@ -18,12 +18,12 @@
     <div class="left">
         <div class="login">
             <p class="title-info"><span>装配车间-登入Login</span></p>
-            <form role="form">
+            <form role="form" onsubmit="return false;">
                 <table class="table">
                     <tbody>
                     <tr>
                         <td><div>机台号</div><div>Station ID</div></td>
-                        <td><input type="text" id="station-input"></td>
+                        <td><input type="text" id="station-input" autocomplete="on"></td>
                         <td><a id="stationBtn" class="common-btn">锁定</a></td>
                     </tr>
                     <tr>
@@ -43,7 +43,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <div class="submit-btn"><a class="common-btn" id="startBtn">确定上机</a></div>
+                <div class="submit-btn"><input type="submit" class="common-btn" id="startBtn"value="确定上机" /></div>
             </form>
         </div>
 
