@@ -292,7 +292,8 @@ $(function () {
             "url": url, "data": param, "callback": function (data) {
                 if (data) {
                     if (data.code == 200) {
-                        if($('#station-input').prop('disabled')){ //锁定
+                        //if($('#station-input').prop('disabled')){ //锁定
+                        if($(".station-input-mask").css("display")!="none"){ //锁定
                             refreshPTable(ecode);
                             buildOrder(equip);
                             refreshUnitTable(equip);
