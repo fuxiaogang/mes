@@ -286,13 +286,19 @@ $(function () {
                 if (data != 'success') {
                     alert(data);
                 } else {
-                    !$('#station-input').prop('disabled') && $('#station-input').val('');
-                    $("input[name='stats-input']:checked").prop('checked', '');
-                    $('#pernr-input').val('');
-                    $('#zzext-input').val('');
-                    clearHistoryTable();
-                    clearOrder();
-                    refreshPTable(ecode);
+                    if($('#station-input').prop('disabled')){ //锁定
+                        refreshHistoryTable(zzext);
+                        buildOrder(zzext);
+                        refreshPTable(ecode);
+                    }else{
+                        $('#station-input').val('');
+                        $("input[name='stats-input']:checked").prop('checked', '');
+                        $('#pernr-input').val('');
+                        $('#zzext-input').val('');
+                        clearHistoryTable();
+                        clearOrder();
+                        refreshPTable(ecode);
+                    }
                 }
             }
         });

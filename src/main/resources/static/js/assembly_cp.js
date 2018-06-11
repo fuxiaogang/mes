@@ -292,13 +292,19 @@ $(function () {
             "url": url, "data": param, "callback": function (data) {
                 if (data) {
                     if (data.code == 200) {
-                        !$('#station-input').prop('disabled') && $('#station-input').val('');
-                        $("input[name='stats-input']:checked").prop('checked', '');
-                        $('#pernr-input').val('');
-                        $('#equip-input').val('');
-                        clearUnitTable();
-                        clearOrder();
-                        refreshPTable(ecode);
+                        if($('#station-input').prop('disabled')){ //锁定
+                            refreshPTable(ecode);
+                            buildOrder(equip);
+                            refreshUnitTable(equip);
+                        }else{
+                            $('#station-input').val('');
+                            $("input[name='stats-input']:checked").prop('checked', '');
+                            $('#pernr-input').val('');
+                            $('#equip-input').val('');
+                            clearUnitTable();
+                            clearOrder();
+                            refreshPTable(ecode);
+                        }
                     } else {
                         alert(data.msg);
                     }
