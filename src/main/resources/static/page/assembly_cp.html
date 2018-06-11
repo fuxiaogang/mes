@@ -23,7 +23,12 @@
                     <tbody>
                     <tr>
                         <td><div>机台号</div><div>Station ID</div></td>
-                        <td><input type="text" id="station-input" /></td>
+                        <td>
+                            <div class="station-wrapper">
+                                <input type="text" id="station-input" />
+                                <span class="station-input-mask"></span>
+                            </div>
+                        </td>
                         <td><a id="stationBtn" class="common-btn">锁定</a></td>
                     </tr>
                     <tr>
@@ -210,11 +215,11 @@
         var toggle = function(){
             if(!isLock){
                 isLock = true;
-                $("#station-input").attr("disabled","disabled");
+                $(".station-input-mask").css({"display":"inline-block"});
                 $("#stationBtn").text("解锁");
             }else{
                 isLock = false;
-                $("#station-input").removeAttr("disabled");
+                $(".station-input-mask").css({"display":"none"});
                 $("#stationBtn").text("锁定");
             }
         };
