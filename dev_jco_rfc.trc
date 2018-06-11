@@ -100,3 +100,79 @@ COUNTER     2
     Return code: RFC_FAILURE(1)
     error group: 102
     key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20180611 225800 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error:  >Mon Jun 11 22:58:00,731<    
+RfcException: [null]
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=sapconnect ASHOST=192.168.0.17 SYSNR=00 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '192.168.0.17:3300' not reached
+
+TIME        Mon Jun 11 22:58:00 2018
+RELEASE     711
+COMPONENT   NI (network interface)
+VERSION     39
+RC          -10
+MODULE      nixxi.cpp
+LINE        3147
+DETAIL      NiPConnect2: 192.168.0.17:3300
+SYSTEM CALL connect
+ERRNO       10060
+ERRNO TEXT  WSAETIMEDOUT: Connection timed out
+COUNTER     2
+
+    Return code: RFC_FAILURE(1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+Error:  >Mon Jun 11 22:58:21,757<    
+RfcException: [null]
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=sapconnect ASHOST=192.168.0.17 SYSNR=00 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '192.168.0.17:3300' not reached
+
+TIME        Mon Jun 11 22:58:21 2018
+RELEASE     711
+COMPONENT   NI (network interface)
+VERSION     39
+RC          -10
+MODULE      nixxi.cpp
+LINE        3147
+DETAIL      NiPConnect2: 192.168.0.17:3300
+SYSTEM CALL connect
+ERRNO       10060
+ERRNO TEXT  WSAETIMEDOUT: Connection timed out
+COUNTER     2
+
+    Return code: RFC_FAILURE(1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20180611 225934 China Standard Time Rel 3.0.1 (2008-10-21) [711.15]
+Error:  >Mon Jun 11 22:59:34,028<    
+RfcException: [null]
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=sapconnect ASHOST=192.168.0.17 SYSNR=00 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '192.168.0.17:3300' not reached
+
+TIME        Mon Jun 11 22:59:34 2018
+RELEASE     711
+COMPONENT   NI (network interface)
+VERSION     39
+RC          -10
+MODULE      nixxi.cpp
+LINE        3147
+DETAIL      NiPConnect2: 192.168.0.17:3300
+SYSTEM CALL connect
+ERRNO       10060
+ERRNO TEXT  WSAETIMEDOUT: Connection timed out
+COUNTER     2
+
+    Return code: RFC_FAILURE(1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION

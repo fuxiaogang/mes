@@ -150,7 +150,6 @@ $(function () {
                         $("#operateType").html(html);
                     } else {
                         $("#operateType").html('');
-                        console.log(data.msg);
                     }
                 }
             }
@@ -199,7 +198,6 @@ $(function () {
                         }, 60000);
                     } else {
                         $("#prd-table tbody").html('');
-                        console.log(data.msg);
                     }
                 }
             }
@@ -226,7 +224,6 @@ $(function () {
                         $("#unitInfTable tbody").html(html);
                     } else {
                         clearUnitTable();
-                        console.log(data.msg);
                     }
                 }
             }
@@ -259,7 +256,6 @@ $(function () {
                         $('#order_usr09').text(data.data.usr09);
                     } else {
                         clearOrder();
-                        console.log(data.msg);
                     }
                 }
             }
