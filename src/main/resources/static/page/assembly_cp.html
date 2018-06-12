@@ -215,12 +215,14 @@
                 $("#station-input").attr("readonly","readonly").css({"background":"#e8e7e7"});
                 $("#pernr-input").attr("readonly","readonly").css({"background":"#e8e7e7"});
                 $("#equip-input").attr("readonly","readonly").css({"background":"#e8e7e7"});
+                $(".table input").css({"box-shadow":"0 0 0px 1000px #e8e7e7 inset"});
                 $("#stationBtn").text("解锁");
             }else{
                 isLock = false;
                 $("#station-input").removeAttr("readonly").css({"background":"#ffffff"});
                 $("#pernr-input").removeAttr("readonly").css({"background":"#ffffff"});
                 $("#equip-input").removeAttr("readonly").css({"background":"#ffffff"});
+                $(".table input").css({"box-shadow":"0 0 0px 1000px #ffffff inset"});
                 $("#stationBtn").text("锁定");
             }
         };
