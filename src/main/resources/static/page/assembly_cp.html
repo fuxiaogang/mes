@@ -24,10 +24,7 @@
                     <tr>
                         <td><div>机台号</div><div>Station ID</div></td>
                         <td>
-                            <div class="station-wrapper">
-                                <input type="text" id="station-input" />
-                                <span class="station-input-mask"></span>
-                            </div>
+                            <input type="text" id="station-input" class="station-input" />
                         </td>
                         <td><a id="stationBtn" class="common-btn">锁定</a></td>
                     </tr>
@@ -48,7 +45,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <div class="submit-btn"><input type="submit" class="common-btn" id="startBtn"value="确定上机" /></div>
+                <div class="submit-btn"><input type="submit" class="common-btn" id="startBtn"  value="确定上机" /></div>
             </form>
         </div>
 
@@ -215,11 +212,15 @@
         var toggle = function(){
             if(!isLock){
                 isLock = true;
-                $(".station-input-mask").css({"display":"inline-block"});
+                $("#station-input").attr("readonly","readonly").css({"background":"#e8e7e7"});
+                $("#pernr-input").attr("readonly","readonly").css({"background":"#e8e7e7"});
+                $("#equip-input").attr("readonly","readonly").css({"background":"#e8e7e7"});
                 $("#stationBtn").text("解锁");
             }else{
                 isLock = false;
-                $(".station-input-mask").css({"display":"none"});
+                $("#station-input").removeAttr("readonly").css({"background":"#ffffff"});
+                $("#pernr-input").removeAttr("readonly").css({"background":"#ffffff"});
+                $("#equip-input").removeAttr("readonly").css({"background":"#ffffff"});
                 $("#stationBtn").text("锁定");
             }
         };

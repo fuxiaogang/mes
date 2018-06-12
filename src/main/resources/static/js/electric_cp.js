@@ -287,7 +287,7 @@ $(function () {
                     alert(data);
                 } else {
                     //if($('#station-input').prop('disabled')){ //锁定
-                    if($(".station-input-mask").css("display")!="none"){ //锁定
+                    if($('#station-input').prop('readonly')){ //锁定
                         refreshHistoryTable(zzext);
                         buildOrder(zzext);
                         refreshPTable(ecode);
