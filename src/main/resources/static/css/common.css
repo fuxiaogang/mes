@@ -43,6 +43,7 @@ a{text-decoration : none!important; }
 .login .emp-input{width:300px;}
 .login .pic-input{width:300px;}
 .login .equ-input{width:300px;}
+.station-input{width: 100%;height: 24px;}
 .station-wrapper{position: relative;}
 .station-wrapper input {width: 100%;height: 24px;}
 .station-input-mask{display:none;background: #e8e7e7;width: 100%;height: 24px;position: absolute;top:0;left:0;opacity: 0.5;filter:alpha(opacity=50);}
