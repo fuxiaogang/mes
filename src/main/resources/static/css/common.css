@@ -54,7 +54,7 @@ a{text-decoration : none!important; }
 .pk-title-info span:first-child{margin-left:10px;float:left;}
 .pk-title-info span:first-child + span + span{float: right;}   /*选取第三个span*/
 .pk-title-info span:first-child + span + span a{color: #fff;margin-right: 10px;}
-.station-status{text-align: center;margin: 10px 0;font-weight: bold;font-size:20px;border: 1px solid #000000;overflow: hidden;}
+.station-status{width:100%;text-align: center;margin: 10px 0;font-weight: bold;font-size:20px;border: 1px solid #000000;overflow: hidden;}
 .station-status-list{height:150px;overflow-y: auto;}
 .station-status-list ul li {float: left;margin-left: 30px;}
 .state_green{color: #00CC00;}
@@ -64,6 +64,7 @@ a{text-decoration : none!important; }
 .history .history-table tr td:nth-child(1){width: 30%;}
 .history .history-table tr td:nth-child(2){width: 30%;}
 .history .history-table tr td:nth-child(4){width: 40%;}
+.production-head {word-break:break-all;}
 .production-inf{height: 280px;overflow-y: auto;}
 .production-inf .table{word-break: break-all;}
 .production-inf .table tr td:nth-child(1){width: 10%;}
@@ -85,6 +86,7 @@ a{text-decoration : none!important; }
 .assembly-prd-table{border:1px solid #000000;overflow-y: auto;}
 .assembly-prd-table .table tr td{width:10%;}
 /***装配车间看板***/
+.assemble-prd-head{word-break:break-all;}
 .assemble-prd-inf{height: 280px;overflow-y: auto;}
 .assemble-prd-inf .table{word-break: break-all;}
 .assemble-prd-inf .table tr td {width: 10%;}
