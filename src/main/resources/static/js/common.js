@@ -16,8 +16,8 @@ EmsCommon.prototype = {
         var html = "";
         html += '<div class="select-box" id="selectBox" >';
         html += '    <div class="select-content">';
-        html += '    <label>2D<input name="picType" type="radio"  value="2" /></label>';
-        html += '    <label>3D<input name="picType" type="radio"  value="3" /></label>';
+        html += '    <label>2D<input name="picType" type="radio"  value="2D" /></label>';
+        html += '    <label>3D<input name="picType" type="radio"  value="3D" /></label>';
         html += '    <div class="button-group">';
         html += '    <a href="javascript:void(0);" class="btn btn-warning" id="confirmBtn">确定</a>';
         html += '    <a href="javascript:void(0);" class="btn btn-warning" id="closeBtn" onclick="emsCommon.closePicTypeSelectBox();">关闭</a>';
