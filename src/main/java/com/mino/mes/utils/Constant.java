@@ -8,6 +8,7 @@ public class Constant {
     public static String FUN_ELEC_STOP_ZMES_IF003 = "ZMES_IF003";
     public static String FUN_ELEC_BOARD_ZMES_IF009 = "ZMES_IF009";
     public static String FUN_ELEC_IMG_ZMES_IF004 = "ZMES_IF004";
+    public static String FUN_ELEC_IMG_ZMES_IF014 = "ZMES_IF014";
 
     public static String FUN_ASSEMBLY_STATION_ZMES_IF012 = "ZMES_IF012";
     public static String FUN_ASSEMBLY_EQUIP_ZMES_IF005 = "ZMES_IF005";

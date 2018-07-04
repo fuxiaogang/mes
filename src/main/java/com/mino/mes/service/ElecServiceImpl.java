@@ -2,14 +2,20 @@ package com.mino.mes.service;
 
 import com.mino.mes.SAPConn;
 import com.mino.mes.utils.Constant;
+import com.mino.mes.utils.FtpUtil;
 import com.mino.mes.utils.MesException;
 import com.mino.mes.vo.*;
 import com.sap.conn.jco.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import java.io.File;
 import java.lang.reflect.Field;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author fuxg
@@ -17,6 +23,12 @@ import java.util.List;
  **/
 @Service
 public class ElecServiceImpl {
+
+    @Autowired
+    FtpUtil ftpUtil;
+
+    @Value("${ftp.download.tmp}")
+    String downloadDir;
 
     public static void main(String[] args) throws Exception {
         //  findEtPlist("ME010");
@@ -320,20 +332,63 @@ public class ElecServiceImpl {
      * @param IN_ZZEXT 图号
      * @throws Exception
      */
-    public ElecImg viewImg(final String IN_ZZEXT) throws Exception {
-        final String functionName = Constant.FUN_ELEC_IMG_ZMES_IF004;
+    public String viewImg(final String IN_ZZEXT, final String IN_MODE) throws Exception {
+        String path = getImgPath(IN_ZZEXT, IN_MODE);
+        String localFilePath = null;
+        if (StringUtils.isEmpty(path)) {
+            throw new MesException("没有找到图纸", 404);
+        }
+        try {
+            localFilePath = downloadImg(path);
+        } catch (MesException e) {
+            if (e.getCode() == 404) {
+                uploadImg(IN_ZZEXT, IN_MODE);
+                localFilePath = downloadImg(path);
+            } else {
+                throw e;
+            }
+        }
+        return localFilePath;
+    }
+
+
+    private String getImgPath(final String IN_ZZEXT, final String IN_MODE) throws Exception {
+        final String functionName = Constant.FUN_ELEC_IMG_ZMES_IF014;
 
         JCoDestination destination = SAPConn.getConnect();
         JCoFunction function = destination.getRepository().getFunction(functionName);
         JCoParameterList input = function.getImportParameterList();
         input.setValue("IN_ZZEXT", IN_ZZEXT);
+        input.setValue("IN_FUNC", "F");
+        input.setValue("IN_MODE", StringUtils.isEmpty(IN_MODE) ? "2D" : IN_MODE);
         function.execute(destination);
 
         checkSapResponse(function);
 
-        String OUT_PATH = function.getExportParameterList().getString("OUT_PATH");
-        return new ElecImg(OUT_PATH);
+        return function.getExportParameterList().getString("OUT_PATH");
     }
+
+    private void uploadImg(final String IN_ZZEXT, final String IN_MODE) throws Exception {
+        final String functionName = Constant.FUN_ELEC_IMG_ZMES_IF014;
+
+        JCoDestination destination = SAPConn.getConnect();
+        JCoFunction function = destination.getRepository().getFunction(functionName);
+        JCoParameterList input = function.getImportParameterList();
+        input.setValue("IN_ZZEXT", IN_ZZEXT);
+        input.setValue("IN_FUNC", "S");
+        input.setValue("IN_MODE", StringUtils.isEmpty(IN_MODE) ? "2D" : IN_MODE);
+        function.execute(destination);
+        checkSapResponse(function);
+    }
+
+    private String downloadImg(String outPath) throws MesException {
+        String localPath = downloadDir;
+        String fileName = UUID.randomUUID().toString().replaceAll("-", "");
+        ftpUtil.downloadFtpFile(outPath, localPath, fileName);
+        String localFilePath = localPath + File.separator + fileName;
+        return localFilePath;
+    }
+
 
     private void checkSapResponse(JCoFunction function) throws MesException {
         String msg = function.getExportParameterList().getString("OUT_MESSAGE");

@@ -123,20 +123,22 @@ $(function () {
             return;
         }
         var param = {'IN_ZZEXT': zzext};
-        emsCommon.request({
-            "url": statsUrl, "data": param, "callback": function (data) {
-                if (data.code == 200) {
-                    var path = data.data.outPath;
-                    if (path && path != '') {
-                        window.open(path)
-                    } else {
-                        alert(zzext + '没有可查看的图纸');
-                    }
-                } else {
-                    alert(data.msg);
-                }
-            }
-        });
+        var url = statsUrl + '?IN_ZZEXT='+zzext;
+        window.open(url,'_bank');
+        // emsCommon.request({
+        //     "url": statsUrl, "data": param, "callback": function (data) {
+        //         if (data.code == 200) {
+        //             var path = data.data.outPath;
+        //             if (path && path != '') {
+        //                 window.open(path)
+        //             } else {
+        //                 alert(zzext + '没有可查看的图纸');
+        //             }
+        //         } else {
+        //             alert(data.msg);
+        //         }
+        //     }
+        // });
     })
 
     //定时刷新时长
