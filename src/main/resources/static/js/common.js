@@ -8,6 +8,44 @@ function EmsCommon() {
 
 EmsCommon.prototype = {
 
+
+    /***
+     * 图纸类型弹框
+     */
+    picTypeSelectBox:function () {
+        var html = "";
+        html += '<div class="select-box" id="selectBox" >';
+        html += '    <div class="select-content">';
+        html += '    <label>2D<input name="picType" type="radio"  value="2D" checked/></label>';
+        html += '    <label>3D<input name="picType" type="radio"  value="3D" /></label>';
+        html += '    <input id="picTypeValue" type="hidden"  value="2D" />';
+        html += '    <div class="button-group">';
+        html += '    <a href="javascript:void(0);" class="btn btn-warning" id="confirmBtn" onclick="emsCommon.confirmPicTypeSelectBox();">确定</a>';
+        html += '    <a href="javascript:void(0);" class="btn btn-warning" id="closeBtn" onclick="emsCommon.closePicTypeSelectBox();">关闭</a>';
+        html += '   </div>';
+        html += '    </div>';
+        html += '</div>';
+        $("#selectBox").remove();
+        $("body").append(html);
+    },
+
+
+    /***
+     * 图纸类型弹框
+     */
+    confirmPicTypeSelectBox:function () {
+        var picType = $("input[name='picType']:checked").val();;
+        $("#picTypeValue").val(picType);
+        $("#selectBox").hide();
+    },
+
+    /***
+     * 关闭图纸类型弹框
+     */
+    closePicTypeSelectBox:function () {
+        $("#selectBox").remove();
+    },
+
     /*
      * @param isMask 转菊花是否添加遮罩层
      */
