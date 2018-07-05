@@ -27,6 +27,7 @@ EmsCommon.prototype = {
         html += '</div>';
         $("#selectBox").remove();
         $("body").append(html);
+        emsCommon.maskElement();
     },
 
 
@@ -43,6 +44,7 @@ EmsCommon.prototype = {
      * 关闭图纸类型弹框
      */
     closePicTypeSelectBox:function () {
+        emsCommon.unmaskElement();
         $("#selectBox").hide();
     },
 

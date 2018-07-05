@@ -184,7 +184,7 @@ $(function () {
                                 .replace('{ecodeText}', item.ecodeText)
                                 .replace('{sname}', item.sname)
                                 .replace('{rdate}', item.rdate)
-                                .replace('{rtime}', item.rtime ? item.rtime.substr(0,5) : '00:00')
+                                .replace('{rtime}', item.rtime ? item.rtime.substr(0, 5) : '00:00')
                                 .replace('{proctTr}', item.proctTr)
                                 .replace('{zstat}', item.zstat)
                                 .replace('{eveid}', item.eveid)
@@ -289,11 +289,11 @@ $(function () {
                 if (data) {
                     if (data.code == 200) {
                         //if($('#station-input').prop('disabled')){ //锁定
-                        if($('#station-input').prop('readonly')){ //锁定
+                        if ($('#station-input').prop('readonly')) { //锁定
                             refreshPTable(ecode);
                             buildOrder(equip);
                             refreshUnitTable(equip);
-                        }else{
+                        } else {
                             $('#station-input').val('');
                             $("input[name='stats-input']:checked").prop('checked', '');
                             $('#pernr-input').val('');
@@ -325,4 +325,25 @@ $(function () {
             }
         });
     }
+
+    $('#viewImg').click(function () {
+        var equip = $('#equip-input').val();
+        if (!equip) {
+            alert('没有輸入设备号');
+            return;
+        }
+        emsCommon.picTypeSelectBox();
+    });
+
+    $("body").on('click', '#confirmBtn', function () {
+        var picType = $("input[name='picType']:checked").val();
+        $("#selectBox").hide();
+        emsCommon.unmaskElement();
+        var zzext = '';
+        var equip = $('#equip-input').val();
+        var unumb = $("input[name='unitSelect']:checked").val();
+        zzext = unumb ? unumb : equip;
+        var url = '/elec/viewImg?IN_ZZEXT=' + zzext + "&IN_MODE=" + picType;
+        window.open(url, '_bank');
+    });
 });

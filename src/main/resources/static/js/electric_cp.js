@@ -115,31 +115,26 @@ $(function () {
         $(this).closest('tr').addClass('selected');
     });
 
+    /**
+     * 点击查看图纸
+     */
     $('#viewImg').click(function () {
-        var statsUrl = '/elec/viewImg';
         var zzext = $('#zzextData').val();
         if (!zzext) {
-            alert('没有选择图号');
+            alert('没有輸入图号');
             return;
         }
-        var param = {'IN_ZZEXT': zzext};
-        var url = statsUrl + '?IN_ZZEXT='+zzext;
-        window.open(url,'_bank');
-        // emsCommon.request({
-        //     "url": statsUrl, "data": param, "callback": function (data) {
-        //         if (data.code == 200) {
-        //             var path = data.data.outPath;
-        //             if (path && path != '') {
-        //                 window.open(path)
-        //             } else {
-        //                 alert(zzext + '没有可查看的图纸');
-        //             }
-        //         } else {
-        //             alert(data.msg);
-        //         }
-        //     }
-        // });
-    })
+        emsCommon.picTypeSelectBox();
+    });
+
+    $("body").on('click', '#confirmBtn', function () {
+        var picType = $("input[name='picType']:checked").val();
+        $("#selectBox").hide();
+        emsCommon.unmaskElement();
+        var zzext = $('#zzextData').val();
+        var url = '/elec/viewImg?IN_ZZEXT=' + zzext + "&IN_MODE=" + picType;
+        window.open(url, '_bank');
+    });
 
     //定时刷新时长
     setInterval(function () {
@@ -289,11 +284,11 @@ $(function () {
                     alert(data);
                 } else {
                     //if($('#station-input').prop('disabled')){ //锁定
-                    if($('#station-input').prop('readonly')){ //锁定
+                    if ($('#station-input').prop('readonly')) { //锁定
                         refreshHistoryTable(zzext);
                         buildOrder(zzext);
                         refreshPTable(ecode);
-                    }else{
+                    } else {
                         $('#station-input').val('');
                         $("input[name='stats-input']:checked").prop('checked', '');
                         $('#pernr-input').val('');

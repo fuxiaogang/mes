@@ -236,6 +236,8 @@ public class MesElecContoller {
 
                 //关闭输出流
                 servletOS.close();
+
+                file.delete();
             }
         } else {
             response.setContentType("text/html;charset=utf-8");
