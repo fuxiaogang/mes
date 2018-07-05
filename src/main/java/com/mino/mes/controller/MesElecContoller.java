@@ -187,8 +187,8 @@ public class MesElecContoller {
             return;
         }
         try {
-            String localFilePath = elecService.viewImg(IN_ZZEXT, IN_MODE);
-            output(localFilePath, null, response);
+            ElecImg elecImg = elecService.viewImg(IN_ZZEXT, IN_MODE);
+            output(elecImg, null, response);
         } catch (MesException e) {
             logger.error(e.getMessage());
             output(null, e.getMessage(), response);
@@ -198,26 +198,20 @@ public class MesElecContoller {
         }
     }
 
-    private void output(String localFilePath, String errorMsg, HttpServletResponse response) throws Exception {
-        File file = null;
-        String fileName = null;
-        if (localFilePath == null) {
-            errorMsg = "找不到图纸";
-        } else {
-            file = new File(localFilePath);
-            fileName = localFilePath.substring(localFilePath.lastIndexOf("//") + 1);
-        }
+    private void output(ElecImg elecImg, String errorMsg, HttpServletResponse response) throws Exception {
 
-        if (errorMsg == null && !file.exists()) {
+        if (elecImg == null || !new File(elecImg.getOutPath()).exists()) {
             errorMsg = "找不到图纸";
         }
         if (errorMsg == null) {
+            String fileName = elecImg.getFileName();
+            File file = new File(elecImg.getOutPath());
             //重置response
             response.reset();
             response.setCharacterEncoding("utf-8");
-            response.setContentType("text/html;charset=utf-8");
+            response.setContentType("application/acad");
             //解决中文文件名显示问题
-            response.addHeader("Content-Disposition", "attachment;filename=" + new String(fileName.getBytes("gb2312"), "ISO8859-1"));
+            response.addHeader("Content-Disposition", "inline;filename=" + new String(fileName.getBytes("gb2312"), "ISO8859-1"));
             //设置文件长度
             int fileLength = (int) file.length();
             response.setContentLength(fileLength);

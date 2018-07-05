@@ -332,23 +332,23 @@ public class ElecServiceImpl {
      * @param IN_ZZEXT 图号
      * @throws Exception
      */
-    public String viewImg(final String IN_ZZEXT, final String IN_MODE) throws Exception {
+    public ElecImg viewImg(final String IN_ZZEXT, final String IN_MODE) throws Exception {
         String path = getImgPath(IN_ZZEXT, IN_MODE);
-        String localFilePath = null;
+        ElecImg elecImg = null;
         if (StringUtils.isEmpty(path)) {
             throw new MesException("没有找到图纸", 404);
         }
         try {
-            localFilePath = downloadImg(path);
+            elecImg = downloadImg(path);
         } catch (MesException e) {
             if (e.getCode() == 404) {
                 uploadImg(IN_ZZEXT, IN_MODE);
-                localFilePath = downloadImg(path);
+                elecImg = downloadImg(path);
             } else {
                 throw e;
             }
         }
-        return localFilePath;
+        return elecImg;
     }
 
 
@@ -365,7 +365,7 @@ public class ElecServiceImpl {
 
         checkSapResponse(function);
 
-        return function.getExportParameterList().getString("OUT_PATH");
+        return function.getExportParameterList().getString("OUT_FILE");
     }
 
     private void uploadImg(final String IN_ZZEXT, final String IN_MODE) throws Exception {
@@ -381,12 +381,10 @@ public class ElecServiceImpl {
         checkSapResponse(function);
     }
 
-    private String downloadImg(String outPath) throws MesException {
+    private ElecImg downloadImg(String outPath) throws MesException {
         String localPath = downloadDir;
         String fileName = UUID.randomUUID().toString().replaceAll("-", "");
-        ftpUtil.downloadFtpFile(outPath, localPath, fileName);
-        String localFilePath = localPath + File.separator + fileName;
-        return localFilePath;
+        return ftpUtil.downloadFtpFile(outPath, localPath, fileName);
     }
 
 
