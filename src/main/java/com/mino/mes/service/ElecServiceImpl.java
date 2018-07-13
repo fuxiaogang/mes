@@ -352,7 +352,7 @@ public class ElecServiceImpl {
     }
 
 
-    private String getImgPath(final String IN_ZZEXT, final String IN_MODE) throws Exception {
+    public String getImgPath(final String IN_ZZEXT, final String IN_MODE) throws Exception {
         final String functionName = Constant.FUN_ELEC_IMG_ZMES_IF014;
 
         JCoDestination destination = SAPConn.getConnect();

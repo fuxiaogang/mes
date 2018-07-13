@@ -244,7 +244,24 @@ public class MesElecContoller {
             PrintWriter out = response.getWriter();
             out.println(errorMsg);
         }
+    }
 
+    /**
+     * 是否有图纸
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value = "/hasImg")
+    public Integer hasImg(String IN_ZZEXT, String IN_MODE){
+        try {
+          String path =  elecService.getImgPath(IN_ZZEXT,IN_MODE);
+          if(!StringUtils.isEmpty(path)){
+              return 1;
+          }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     @ResponseBody

@@ -124,7 +124,18 @@ $(function () {
             alert('没有輸入图号');
             return;
         }
-        emsCommon.picTypeSelectBox();
+        var url = '/elec/hasImg';
+        var param = {'IN_ZZEXT': zzext, 'IN_MODE': '2D'};
+        emsCommon.request({
+            "url": url, "data": param, "callback": function (data) {
+                if (data == 1) {
+                    var url = '/elec/viewImg?IN_ZZEXT=' + zzext + "&IN_MODE=2D";
+                    window.open(url, '_bank');
+                } else {
+                    alert('没有图纸');
+                }
+            }
+        });
     });
 
     $("body").on('click', '#confirmBtn', function () {

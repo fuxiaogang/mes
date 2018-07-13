@@ -343,7 +343,19 @@ $(function () {
         var equip = $('#equip-input').val();
         var unumb = $("input[name='unitSelect']:checked").val();
         zzext = unumb ? unumb : equip;
-        var url = '/elec/viewImg?IN_ZZEXT=' + zzext + "&IN_MODE=" + picType;
-        window.open(url, '_bank');
+
+        var url = '/elec/hasImg';
+        var param = {'IN_ZZEXT': zzext, 'IN_MODE': picType};
+        emsCommon.request({
+            "url": url, "data": param, "callback": function (data) {
+                if (data == 1) {
+                    var url = '/elec/viewImg?IN_ZZEXT=' + zzext + "&IN_MODE=" + picType;
+                    window.open(url, '_bank');
+                } else {
+                    alert('没有图纸');
+                }
+            }
+        });
+
     });
 });
